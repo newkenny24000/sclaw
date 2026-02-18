@@ -161,6 +161,20 @@
     background-clip: text;
   }
 
+  /* -- HERO PHOTO -- */
+  .hero-photo-wrap {
+    max-width: 700px; margin: 0 auto; padding: 0 2rem;
+  }
+  .hero-photo {
+    width: 100%; height: 340px;
+    object-fit: cover; object-position: center 55%;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+  }
+  @media (max-width: 640px) {
+    .hero-photo { height: 240px; }
+  }
+
   /* -- STATS ROW -- */
   .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; margin-top: 2.5rem; }
   .stat-card {
@@ -302,6 +316,11 @@
   </p>
   <a href="#contact" class="btn-primary">Get Started</a>
 </section>
+
+<!-- HERO PHOTO -->
+<div class="hero-photo-wrap">
+  <img src="pizzeria.png" alt="Kids playing a Super Claw Bros claw machine in a restaurant" class="hero-photo">
+</div>
 
 <!-- VALUE PROPS -->
 <section>
