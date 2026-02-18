@@ -5,22 +5,25 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Super Claw Bros. | Host a Machine in Buffalo, NY</title>
-<meta name="description" content="Put a Super Claw Bros claw machine in your Buffalo, NY venue. Zero upfront cost, 50/50 revenue share, fully managed. A local company driving repeat foot traffic to your location.">
+<meta name="description" content="Put a Super Claw Bros claw machine in your Buffalo, NY business. Zero upfront cost, fully managed. A local company providing entertainment and passive income.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Press+Start+2P&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0a0a1a;
-    --bg-card: rgba(15, 10, 35, 0.8);
-    --pink: #ff2d78;
-    --cyan: #00e5ff;
-    --yellow: #ffe135;
-    --purple: #a855f7;
-    --text: #f0eeff;
-    --text-muted: #a09cc0;
-    --border: rgba(168, 85, 247, 0.25);
-    --pixel-border: 3px solid;
+    --bg: #0a0e1a;
+    --bg-surface: rgba(12, 18, 35, 0.85);
+    --blue: #0077FF;
+    --blue-bright: #3399FF;
+    --blue-glow: rgba(0, 119, 255, 0.15);
+    --red: #E8243C;
+    --red-glow: rgba(232, 36, 60, 0.12);
+    --white: #FFFFFF;
+    --text: #E8ECF4;
+    --text-muted: #8A94A8;
+    --text-dim: #5A6478;
+    --border: rgba(255, 255, 255, 0.08);
+    --border-accent: rgba(0, 119, 255, 0.2);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -29,240 +32,220 @@
   body {
     background: var(--bg);
     color: var(--text);
-    font-family: 'VT323', monospace;
-    font-size: 22px;
-    line-height: 1.6;
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: 17px;
+    line-height: 1.7;
     overflow-x: hidden;
-    image-rendering: pixelated;
+    -webkit-font-smoothing: antialiased;
   }
 
-  .bg-glow {
-    position: fixed; inset: 0; z-index: 0; pointer-events: none;
-    background:
-      radial-gradient(ellipse 60% 40% at 20% 10%, rgba(168,85,247,0.1), transparent),
-      radial-gradient(ellipse 50% 40% at 80% 20%, rgba(0,229,255,0.08), transparent),
-      radial-gradient(ellipse 50% 30% at 50% 90%, rgba(255,45,120,0.08), transparent);
-  }
+  /* -- SUBTLE BG -- */
   .bg-grid {
     position: fixed; inset: 0; z-index: 0; pointer-events: none;
     background-image:
-      linear-gradient(rgba(0,229,255,0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0,229,255,0.04) 1px, transparent 1px);
-    background-size: 32px 32px;
+      linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+    background-size: 48px 48px;
   }
   .wrap { position: relative; z-index: 1; }
-
-  /* -- PIXEL BORDER UTILITY -- */
-  .pixel-border {
-    border: 3px solid var(--purple);
-    box-shadow:
-      inset 0 0 0 1px rgba(0,229,255,0.1),
-      0 0 15px rgba(168,85,247,0.15),
-      0 0 30px rgba(255,45,120,0.05);
-  }
 
   /* -- NAV -- */
   nav {
     position: sticky; top: 0; z-index: 100;
-    background: rgba(10,10,26,0.85);
-    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-    border-bottom: 3px solid var(--purple);
+    background: rgba(10,14,26,0.92);
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
   }
   .nav-inner {
     display: flex; justify-content: space-between; align-items: center;
-    max-width: 1200px; margin: 0 auto; padding: 1rem 2rem;
+    max-width: 1100px; margin: 0 auto; padding: 0.9rem 2rem;
   }
   .nav-brand {
-    font-family: 'Press Start 2P', cursive; font-size: 0.85rem;
-    color: var(--pink); text-decoration: none;
-    text-shadow: 0 0 20px rgba(255,45,120,0.5), 2px 2px 0 rgba(0,0,0,0.5);
-    letter-spacing: 0.05em;
+    font-family: 'Press Start 2P', cursive; font-size: 0.72rem;
+    color: var(--white); text-decoration: none;
+    letter-spacing: 0.04em;
   }
+  .nav-brand .brand-blue { color: var(--blue-bright); }
+  .nav-brand .brand-red { color: var(--red); }
   .nav-cta {
     display: inline-block;
-    background: var(--pink);
-    color: #fff; padding: 0.6rem 1.5rem;
-    border: 3px solid #fff;
-    font-family: 'Press Start 2P', cursive; font-size: 0.6rem;
-    text-decoration: none; text-transform: uppercase;
-    box-shadow: 4px 4px 0 rgba(0,0,0,0.5);
-    transition: transform 0.1s, box-shadow 0.1s;
+    background: var(--red);
+    color: var(--white); padding: 0.55rem 1.4rem;
+    border-radius: 6px; font-weight: 600;
+    font-size: 0.85rem; text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
   }
-  .nav-cta:hover { transform: translate(2px, 2px); box-shadow: 2px 2px 0 rgba(0,0,0,0.5); }
+  .nav-cta:hover { background: #cc1e34; transform: translateY(-1px); }
 
   /* -- SHARED -- */
-  section { max-width: 1200px; margin: 0 auto; padding: 6rem 2rem; }
+  section { max-width: 1100px; margin: 0 auto; padding: 5rem 2rem; }
   .section-label {
-    font-family: 'Press Start 2P', cursive; font-size: 0.55rem;
-    letter-spacing: 0.15em; text-transform: uppercase;
-    color: var(--cyan); margin-bottom: 1rem;
-    text-shadow: 0 0 10px rgba(0,229,255,0.5);
+    font-family: 'Press Start 2P', cursive; font-size: 0.5rem;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--blue-bright); margin-bottom: 0.9rem;
   }
-  h1 { font-family: 'Press Start 2P', cursive; font-size: clamp(1.4rem, 4vw, 2.2rem); line-height: 1.5; margin-bottom: 1.5rem; }
-  h2 { font-family: 'Press Start 2P', cursive; font-size: clamp(0.9rem, 2.5vw, 1.4rem); line-height: 1.5; margin-bottom: 1rem; }
-  h3 { font-family: 'Press Start 2P', cursive; font-size: 0.7rem; margin-bottom: 0.75rem; line-height: 1.6; }
+  h1 {
+    font-family: 'Inter', sans-serif; font-weight: 800;
+    font-size: clamp(2.2rem, 5.5vw, 3.5rem);
+    line-height: 1.15; margin-bottom: 1.25rem; color: var(--white);
+    letter-spacing: -0.02em;
+  }
+  h2 {
+    font-family: 'Inter', sans-serif; font-weight: 700;
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    line-height: 1.25; margin-bottom: 0.75rem; color: var(--white);
+    letter-spacing: -0.01em;
+  }
+  h3 {
+    font-family: 'Inter', sans-serif; font-weight: 700;
+    font-size: 1.05rem; margin-bottom: 0.5rem; color: var(--white);
+  }
   .text-muted { color: var(--text-muted); }
-  .text-pink { color: var(--pink); }
-  .text-cyan { color: var(--cyan); }
-  .text-yellow { color: var(--yellow); }
-  .text-purple { color: var(--purple); }
-  .gradient-text {
-    background: linear-gradient(90deg, var(--pink), var(--cyan));
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-  }
+  .text-blue { color: var(--blue-bright); }
+  .text-red { color: var(--red); }
+  .text-white { color: var(--white); }
+
   .btn-primary {
-    display: inline-block; font-family: 'Press Start 2P', cursive; font-size: 0.75rem;
-    padding: 1rem 2.5rem; background: var(--pink);
-    color: #fff; border: 3px solid #fff; cursor: pointer; text-decoration: none;
-    box-shadow: 6px 6px 0 rgba(0,0,0,0.5);
-    transition: transform 0.1s, box-shadow 0.1s;
-    letter-spacing: 0.05em; text-transform: uppercase;
+    display: inline-block; font-weight: 700; font-size: 0.95rem;
+    padding: 0.95rem 2.2rem; background: var(--red);
+    color: var(--white); border: none; border-radius: 8px;
+    cursor: pointer; text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    letter-spacing: 0.02em;
   }
-  .btn-primary:hover { transform: translate(3px, 3px); box-shadow: 3px 3px 0 rgba(0,0,0,0.5); }
-  .divider { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
-  .divider hr {
-    border: none; border-top: 3px dashed rgba(168,85,247,0.3);
-  }
+  .btn-primary:hover { background: #cc1e34; transform: translateY(-2px); }
+
+  .divider { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+  .divider hr { border: none; border-top: 1px solid var(--border); }
 
   /* -- HERO -- */
-  .hero { text-align: center; padding: 9rem 2rem 6rem; position: relative; }
+  .hero { text-align: center; padding: 8rem 2rem 5rem; position: relative; }
   .hero .tagline {
-    font-family: 'VT323', monospace;
-    font-size: 1.4rem; color: var(--text-muted); max-width: 650px;
-    margin: 0 auto 2.5rem;
+    font-size: 1.15rem; color: var(--text-muted); max-width: 600px;
+    margin: 0 auto 2.5rem; font-weight: 400; line-height: 1.7;
   }
-  .hero-glow {
-    width: 400px; height: 400px; border-radius: 50%;
-    background: radial-gradient(circle, rgba(0,229,255,0.12), transparent 70%);
-    position: absolute; top: 8%; left: 50%; transform: translateX(-50%);
-    pointer-events: none; z-index: -1;
+  .hero h1 .accent {
+    background: linear-gradient(135deg, var(--blue-bright), var(--blue));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 
   /* -- STATS ROW -- */
-  .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; margin-top: 3rem; }
+  .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; margin-top: 2.5rem; }
   .stat-card {
-    text-align: center; padding: 2rem 1.5rem; background: var(--bg-card);
-    border: 3px solid var(--purple);
-    box-shadow: 6px 6px 0 rgba(0,0,0,0.4);
-    transition: transform 0.1s, box-shadow 0.1s;
+    text-align: center; padding: 1.75rem 1.25rem;
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    transition: border-color 0.3s, transform 0.2s;
   }
-  .stat-card:hover { transform: translate(2px, 2px); box-shadow: 4px 4px 0 rgba(0,0,0,0.4); }
-  .stat-value { font-family: 'Press Start 2P', cursive; font-size: 1.2rem; margin-bottom: 0.5rem; }
-  .stat-label { color: var(--text-muted); font-size: 1rem; }
+  .stat-card:hover { border-color: var(--border-accent); transform: translateY(-2px); }
+  .stat-value {
+    font-family: 'Press Start 2P', cursive; font-size: 1rem;
+    margin-bottom: 0.4rem;
+  }
+  .stat-label { color: var(--text-muted); font-size: 0.9rem; }
 
   /* -- HOW IT WORKS -- */
-  .how-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3rem; }
+  .how-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2.5rem; }
   .how-card {
-    padding: 2.5rem 2rem; background: var(--bg-card);
-    border: 3px solid var(--purple);
-    box-shadow: 6px 6px 0 rgba(0,0,0,0.4);
-    transition: transform 0.1s, box-shadow 0.1s;
+    padding: 2rem 1.75rem; background: var(--bg-surface);
+    border: 1px solid var(--border); border-radius: 12px;
+    transition: border-color 0.3s, transform 0.2s;
+    position: relative;
   }
-  .how-card:hover { transform: translate(2px, 2px); box-shadow: 4px 4px 0 rgba(0,0,0,0.4); border-color: var(--cyan); }
-  .how-icon { font-size: 2.5rem; margin-bottom: 1rem; display: block; }
-  .how-card p { color: var(--text-muted); font-size: 1.1rem; }
+  .how-card:hover { border-color: var(--border-accent); transform: translateY(-2px); }
+  .how-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--blue), var(--red));
+    border-radius: 12px 12px 0 0;
+    opacity: 0; transition: opacity 0.3s;
+  }
+  .how-card:hover::before { opacity: 1; }
+  .how-icon { font-size: 2rem; margin-bottom: 0.75rem; display: block; }
+  .how-card p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.65; }
+  .step-num {
+    font-family: 'Press Start 2P', cursive; font-size: 0.5rem;
+    color: var(--blue-bright); margin-bottom: 0.5rem; display: block;
+  }
 
   /* -- REVENUE MODEL -- */
-  .revenue-split {
-    margin-top: 3rem; max-width: 700px;
-  }
+  .revenue-split { margin-top: 2.5rem; max-width: 700px; }
   .revenue-list { list-style: none; }
   .revenue-list li {
-    padding: 1rem 0; border-bottom: 2px dashed rgba(168,85,247,0.2);
-    display: flex; align-items: baseline; gap: 1rem;
+    padding: 0.9rem 0; border-bottom: 1px solid var(--border);
+    display: flex; align-items: baseline; gap: 0.9rem;
+    font-size: 1rem;
   }
   .revenue-list li:last-child { border-bottom: none; }
-  .revenue-check { color: var(--cyan); font-family: 'Press Start 2P', cursive; font-size: 0.6rem; flex-shrink: 0; }
-
-  /* -- MACHINE FEATURES -- */
-  .machine-features { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-top: 3rem; }
-  .machine-feature {
-    padding: 2rem; background: var(--bg-card);
-    border: 3px solid var(--purple);
-    box-shadow: 6px 6px 0 rgba(0,0,0,0.4);
+  .revenue-check {
+    color: var(--blue-bright); font-weight: 700; font-size: 1.1rem;
+    flex-shrink: 0;
   }
-  .machine-feature h3 { margin-bottom: 0.5rem; }
-  .machine-feature p { color: var(--text-muted); font-size: 1.1rem; }
 
   /* -- CONTACT -- */
   .contact-section {
     text-align: center;
-    background: linear-gradient(180deg, transparent, rgba(168,85,247,0.04), transparent);
-    border-top: 3px dashed rgba(168,85,247,0.3);
-    border-bottom: 3px dashed rgba(168,85,247,0.3);
+    border-top: 1px solid var(--border);
   }
-  .contact-section > p { max-width: 550px; margin: 0 auto 2rem; color: var(--text-muted); }
+  .contact-section > p { max-width: 500px; margin: 0 auto 2rem; color: var(--text-muted); font-size: 1rem; }
   .contact-form {
-    max-width: 500px; margin: 0 auto; display: flex; flex-direction: column; gap: 1rem;
+    max-width: 480px; margin: 0 auto; display: flex; flex-direction: column; gap: 0.85rem;
   }
   .contact-form input,
   .contact-form textarea {
-    width: 100%; padding: 0.9rem 1.25rem;
-    background: rgba(10,10,26,0.9); border: 2px solid var(--purple);
-    color: var(--text);
-    font-family: 'VT323', monospace; font-size: 1.1rem;
-    transition: border-color 0.2s; outline: none;
+    width: 100%; padding: 0.85rem 1.1rem;
+    background: rgba(255,255,255,0.04); border: 1px solid var(--border);
+    border-radius: 8px; color: var(--text);
+    font-family: 'Inter', sans-serif; font-size: 0.95rem;
+    transition: border-color 0.2s, box-shadow 0.2s; outline: none;
   }
   .contact-form input::placeholder,
-  .contact-form textarea::placeholder { color: var(--text-muted); opacity: 0.5; }
+  .contact-form textarea::placeholder { color: var(--text-dim); }
   .contact-form input:focus,
-  .contact-form textarea:focus { border-color: var(--cyan); box-shadow: 0 0 10px rgba(0,229,255,0.2); }
-  .contact-form textarea { resize: vertical; min-height: 120px; }
-  .contact-form button { align-self: center; }
+  .contact-form textarea:focus {
+    border-color: var(--blue); box-shadow: 0 0 0 3px var(--blue-glow);
+  }
+  .contact-form textarea { resize: vertical; min-height: 100px; }
+  .contact-form button { align-self: center; margin-top: 0.25rem; }
   .form-group { text-align: left; }
   .form-group label.group-label {
-    display: block; font-size: 1rem; color: var(--text-muted);
-    margin-bottom: 0.5rem;
+    display: block; font-size: 0.85rem; color: var(--text-muted);
+    margin-bottom: 0.4rem; font-weight: 500;
   }
-  .radio-row { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .radio-row { display: flex; gap: 1.25rem; flex-wrap: wrap; }
   .radio-row label {
-    display: flex; align-items: center; gap: 0.4rem;
-    font-size: 1.05rem; color: var(--text); cursor: pointer;
+    display: flex; align-items: center; gap: 0.35rem;
+    font-size: 0.9rem; color: var(--text); cursor: pointer;
   }
   .radio-row input[type="radio"] {
-    width: auto; accent-color: var(--cyan); cursor: pointer;
+    width: auto; accent-color: var(--blue); cursor: pointer;
   }
 
   /* -- FOOTER -- */
   footer {
-    max-width: 1200px; margin: 0 auto; padding: 3rem 2rem;
+    max-width: 1100px; margin: 0 auto; padding: 2.5rem 2rem;
     display: flex; justify-content: space-between; align-items: center;
-    border-top: 3px solid var(--purple); font-size: 1rem; color: var(--text-muted);
+    border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--text-dim);
     flex-wrap: wrap; gap: 1rem;
-  }
-  footer span { font-family: 'VT323', monospace; }
-
-  /* -- SCANLINE EFFECT -- */
-  body::after {
-    content: ''; position: fixed; inset: 0; z-index: 9999;
-    pointer-events: none;
-    background: repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 2px,
-      rgba(0,0,0,0.03) 2px,
-      rgba(0,0,0,0.03) 4px
-    );
   }
 
   /* -- RESPONSIVE -- */
   @media (max-width: 900px) {
     .stats-row { grid-template-columns: repeat(2, 1fr); }
     .how-grid { grid-template-columns: 1fr; }
-    .machine-features { grid-template-columns: 1fr; }
   }
   @media (max-width: 640px) {
-    .hero { padding: 6rem 1.5rem 4rem; }
-    section { padding: 4rem 1.5rem; }
-    .stats-row { grid-template-columns: 1fr 1fr; gap: 1rem; }
-    h1 { font-size: 1.1rem; }
-    .nav-brand { font-size: 0.65rem; }
+    .hero { padding: 5rem 1.5rem 3.5rem; }
+    section { padding: 3.5rem 1.5rem; }
+    .stats-row { grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+    .stat-card { padding: 1.25rem 1rem; }
+    .nav-brand { font-size: 0.58rem; }
   }
 </style>
 </head>
 <body>
 
-<div class="bg-glow"></div>
 <div class="bg-grid"></div>
 
 <div class="wrap">
@@ -270,44 +253,42 @@
 <!-- NAV -->
 <nav>
   <div class="nav-inner">
-    <a href="#" class="nav-brand">SUPER CLAW BROS.</a>
+    <a href="#" class="nav-brand"><span class="brand-blue">SUPER</span> <span class="brand-red">CLAW</span> BROS.</a>
     <a href="#contact" class="nav-cta">Get Started</a>
   </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-glow"></div>
   <div class="section-label">Buffalo, NY&rsquo;s Local Claw Machine Company</div>
   <h1>
-    <span class="text-cyan">Host a</span><br>
-    <span class="gradient-text">Super Claw Bros Machine</span>
+    Host a <span class="accent">Super Claw Bros</span> Machine
   </h1>
   <p class="tagline">
     Put a claw machine in your business. Fun entertainment for your guests
     while earning passive income in a small footprint.
     Zero upfront cost, we handle everything &mdash; you just collect your share of the revenue.
   </p>
-  <a href="#contact" class="btn-primary">GET STARTED</a>
+  <a href="#contact" class="btn-primary">Get Started</a>
 </section>
 
 <!-- VALUE PROPS -->
 <section>
   <div class="stats-row">
     <div class="stat-card">
-      <div class="stat-value text-cyan">$0</div>
+      <div class="stat-value text-blue">$0</div>
       <div class="stat-label">Upfront cost to you</div>
     </div>
     <div class="stat-card">
-      <div class="stat-value text-pink">Easy</div>
+      <div class="stat-value text-red">Easy</div>
       <div class="stat-label">We take care of everything</div>
     </div>
     <div class="stat-card">
-      <div class="stat-value text-yellow">Tiny</div>
+      <div class="stat-value text-blue">Tiny</div>
       <div class="stat-label">Footprint as small as 14" x 20"</div>
     </div>
     <div class="stat-card">
-      <div class="stat-value text-purple">Local</div>
+      <div class="stat-value text-red">Local</div>
       <div class="stat-label">Owned &amp; operated in Buffalo, NY</div>
     </div>
   </div>
@@ -323,18 +304,18 @@
 
   <div class="how-grid">
     <div class="how-card">
-      <span class="how-icon">&#129309;</span>
-      <h3>1. We Place a Machine</h3>
+      <span class="step-num">STEP 01</span>
+      <h3>We Place a Machine</h3>
       <p>We install a Super Claw Bros machine at your location. No cost, no hassle. We handle delivery, setup, and stocking it with fun prizes.</p>
     </div>
     <div class="how-card">
-      <span class="how-icon">&#127918;</span>
-      <h3>2. Customers Play</h3>
+      <span class="step-num">STEP 02</span>
+      <h3>Customers Play</h3>
       <p>Your customers walk up and play with dollars or quarters. They win prizes frequently and have a great time.</p>
     </div>
     <div class="how-card">
-      <span class="how-icon">&#128176;</span>
-      <h3>3. You Earn</h3>
+      <span class="step-num">STEP 03</span>
+      <h3>You Earn</h3>
       <p>You earn a share of the profit from every play with convenient cash payouts. We handle restocking and maintenance.</p>
     </div>
   </div>
@@ -348,19 +329,19 @@
   <h2>Fits Almost Anywhere</h2>
   <p class="text-muted">Our mini claw machines take up hardly any space &mdash; but they make a big impression.</p>
 
-  <div class="how-grid" style="grid-template-columns: repeat(3, 1fr); margin-top: 3rem;">
+  <div class="how-grid" style="margin-top: 2.5rem;">
     <div class="how-card">
-      <span class="how-icon">&#128207;</span>
+      <span class="step-num">COMPACT</span>
       <h3>As Small as 14" x 20"</h3>
       <p>These compact machines fit on a countertop, in a corner, or next to a register. No need to sacrifice valuable floor space.</p>
     </div>
     <div class="how-card">
-      <span class="how-icon">&#128184;</span>
+      <span class="step-num">PASSIVE</span>
       <h3>Passive Income</h3>
       <p>Once it's placed, the machine earns revenue on its own. No staffing, no effort on your part &mdash; just plug it in and let it work.</p>
     </div>
     <div class="how-card">
-      <span class="how-icon">&#127881;</span>
+      <span class="step-num">FUN</span>
       <h3>Guest Entertainment</h3>
       <p>Customers love claw machines. It gives them something fun to do while they wait, browse, or hang out &mdash; keeping them in your venue longer.</p>
     </div>
@@ -376,26 +357,24 @@
   <p class="text-muted">A partnership that benefits both sides.</p>
 
   <div class="revenue-split">
-    <div>
-      <ul class="revenue-list">
-        <li>
-          <span class="revenue-check">+</span>
-          <span><strong>Zero upfront investment</strong> &mdash; we provide the machine, stock it with prizes, and maintain it</span>
-        </li>
-        <li>
-          <span class="revenue-check">+</span>
-          <span><strong>Revenue from every play</strong> &mdash; dollars and quarters go straight into the coin box</span>
-        </li>
-        <li>
-          <span class="revenue-check">+</span>
-          <span><strong>We handle everything</strong> &mdash; restocking prizes, maintenance, and platform management</span>
-        </li>
-        <li>
-          <span class="revenue-check">+</span>
-          <span><strong>Local support</strong> &mdash; we're based right here in Buffalo, so service and restocking is always fast</span>
-        </li>
-      </ul>
-    </div>
+    <ul class="revenue-list">
+      <li>
+        <span class="revenue-check">&#10003;</span>
+        <span><strong>Zero upfront investment</strong> &mdash; we provide the machine, stock it with prizes, and maintain it</span>
+      </li>
+      <li>
+        <span class="revenue-check">&#10003;</span>
+        <span><strong>Revenue from every play</strong> &mdash; dollars and quarters go straight into the coin box</span>
+      </li>
+      <li>
+        <span class="revenue-check">&#10003;</span>
+        <span><strong>We handle everything</strong> &mdash; restocking prizes, maintenance, and platform management</span>
+      </li>
+      <li>
+        <span class="revenue-check">&#10003;</span>
+        <span><strong>Local support</strong> &mdash; we're based right here in Buffalo, so service and restocking is always fast</span>
+      </li>
+    </ul>
   </div>
 </section>
 
@@ -433,13 +412,13 @@
       </div>
     </div>
     <textarea name="message" placeholder="Tell us about your venue (type, foot traffic, etc.)"></textarea>
-    <button type="submit" class="btn-primary" style="font-size: 0.65rem;">SUBMIT INTEREST</button>
+    <button type="submit" class="btn-primary" style="font-size: 0.9rem; width: 100%;">Submit Interest</button>
   </form>
   <script>
     document.getElementById('contact-form').addEventListener('submit', function(e) {
       e.preventDefault();
       var btn = this.querySelector('button');
-      btn.textContent = 'SENDING...';
+      btn.textContent = 'Sending...';
       btn.disabled = true;
       fetch('https://formspree.io/f/mpqjlpwb', {
         method: 'POST',
@@ -447,8 +426,8 @@
         headers: { 'Accept': 'application/json' }
       }).then(function(r) {
         if (r.ok) { window.location.href = '/thanks.html'; }
-        else { btn.textContent = 'ERROR - TRY AGAIN'; btn.disabled = false; }
-      }).catch(function() { btn.textContent = 'ERROR - TRY AGAIN'; btn.disabled = false; });
+        else { btn.textContent = 'Error - Try Again'; btn.disabled = false; }
+      }).catch(function() { btn.textContent = 'Error - Try Again'; btn.disabled = false; });
     });
   </script>
 </section>
