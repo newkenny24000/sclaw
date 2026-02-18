@@ -188,6 +188,19 @@
   .contact-form textarea:focus { border-color: var(--purple); }
   .contact-form textarea { resize: vertical; min-height: 120px; }
   .contact-form button { align-self: center; }
+  .form-group { text-align: left; }
+  .form-group label.group-label {
+    display: block; font-size: 0.9rem; color: var(--text-muted);
+    margin-bottom: 0.5rem; font-weight: 500;
+  }
+  .radio-row { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .radio-row label {
+    display: flex; align-items: center; gap: 0.4rem;
+    font-size: 0.95rem; color: var(--text); cursor: pointer;
+  }
+  .radio-row input[type="radio"] {
+    width: auto; accent-color: var(--purple); cursor: pointer;
+  }
 
   /* -- FOOTER -- */
   footer {
@@ -336,9 +349,26 @@
     <input type="email" name="_replyto" placeholder="Email address" required>
     <input type="text" name="business" placeholder="Business name">
     <input type="text" name="address" placeholder="Business address">
+    <input type="tel" name="phone" placeholder="Phone number">
+    <div class="form-group">
+      <label class="group-label">Preferred contact method</label>
+      <div class="radio-row">
+        <label><input type="radio" name="contact_method" value="Email" checked> Email</label>
+        <label><input type="radio" name="contact_method" value="Call"> Call</label>
+        <label><input type="radio" name="contact_method" value="Text"> Text</label>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="group-label">Preferred time of day</label>
+      <div class="radio-row">
+        <label><input type="radio" name="preferred_time" value="Morning" checked> Morning</label>
+        <label><input type="radio" name="preferred_time" value="Afternoon"> Afternoon</label>
+        <label><input type="radio" name="preferred_time" value="Evening"> Evening</label>
+      </div>
+    </div>
     <textarea name="message" placeholder="Tell us about your venue (type, foot traffic, etc.)"></textarea>
     <input type="hidden" name="_subject" value="New Super Claw Bros Venue Interest">
-    <input type="hidden" name="_next" value="https://superclawbros.com?submitted=true">
+    <input type="hidden" name="_next" value="https://superclawbros.com/thanks.html">
     <button type="submit" class="btn-primary" style="font-size: 0.95rem;">SUBMIT INTEREST</button>
   </form>
 </section>
