@@ -6,62 +6,71 @@
 <title>Thank You | Super Claw Bros.</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0c0a1a;
+    --bg: #0a0a1a;
     --pink: #ff2d78;
     --cyan: #00e5ff;
     --purple: #a855f7;
     --text: #f0eeff;
     --text-muted: #a09cc0;
-    --border: rgba(168, 85, 247, 0.15);
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
     background: var(--bg);
     color: var(--text);
-    font-family: 'Outfit', sans-serif;
-    font-size: 18px;
-    line-height: 1.7;
+    font-family: 'VT323', monospace;
+    font-size: 22px;
+    line-height: 1.6;
     min-height: 100vh;
     display: flex; flex-direction: column;
     align-items: center; justify-content: center;
     text-align: center; padding: 2rem;
+    image-rendering: pixelated;
   }
   .bg-glow {
     position: fixed; inset: 0; z-index: 0; pointer-events: none;
     background:
-      radial-gradient(ellipse 60% 40% at 20% 10%, rgba(168,85,247,0.08), transparent),
-      radial-gradient(ellipse 50% 40% at 80% 20%, rgba(0,229,255,0.06), transparent),
-      radial-gradient(ellipse 50% 30% at 50% 90%, rgba(255,45,120,0.06), transparent);
+      radial-gradient(ellipse 60% 40% at 20% 10%, rgba(168,85,247,0.1), transparent),
+      radial-gradient(ellipse 50% 40% at 80% 20%, rgba(0,229,255,0.08), transparent),
+      radial-gradient(ellipse 50% 30% at 50% 90%, rgba(255,45,120,0.08), transparent);
   }
   .bg-grid {
     position: fixed; inset: 0; z-index: 0; pointer-events: none;
     background-image:
-      linear-gradient(rgba(168,85,247,0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(168,85,247,0.03) 1px, transparent 1px);
-    background-size: 60px 60px;
+      linear-gradient(rgba(0,229,255,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,229,255,0.04) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+  body::after {
+    content: ''; position: fixed; inset: 0; z-index: 9999;
+    pointer-events: none;
+    background: repeating-linear-gradient(
+      0deg, transparent, transparent 2px,
+      rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px
+    );
   }
   .content { position: relative; z-index: 1; max-width: 600px; }
   .icon { font-size: 4rem; margin-bottom: 1.5rem; }
   h1 {
-    font-family: 'Bungee', cursive;
-    font-size: clamp(2rem, 5vw, 3rem);
-    line-height: 1.2; margin-bottom: 1rem;
+    font-family: 'Press Start 2P', cursive;
+    font-size: clamp(1.2rem, 4vw, 1.8rem);
+    line-height: 1.5; margin-bottom: 1.5rem;
     background: linear-gradient(90deg, var(--pink), var(--cyan));
     -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
   }
-  p { color: var(--text-muted); font-size: 1.15rem; margin-bottom: 2rem; }
+  p { color: var(--text-muted); font-size: 1.3rem; margin-bottom: 2rem; }
   .btn {
-    display: inline-block; font-family: 'Bungee', cursive; font-size: 0.95rem;
+    display: inline-block; font-family: 'Press Start 2P', cursive; font-size: 0.65rem;
     padding: 0.9rem 2rem;
-    background: linear-gradient(135deg, var(--pink), var(--purple));
-    color: #fff; border: none; border-radius: 50px; text-decoration: none;
-    box-shadow: 0 4px 30px rgba(255,45,120,0.4);
-    transition: transform 0.2s, box-shadow 0.2s;
+    background: var(--pink);
+    color: #fff; border: 3px solid #fff; text-decoration: none;
+    box-shadow: 6px 6px 0 rgba(0,0,0,0.5);
+    transition: transform 0.1s, box-shadow 0.1s;
+    text-transform: uppercase;
   }
-  .btn:hover { transform: translateY(-2px) scale(1.03); box-shadow: 0 8px 40px rgba(255,45,120,0.6); }
+  .btn:hover { transform: translate(3px, 3px); box-shadow: 3px 3px 0 rgba(0,0,0,0.5); }
 </style>
 </head>
 <body>
