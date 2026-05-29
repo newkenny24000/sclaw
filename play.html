@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<!-- Super Claw Bros - mini claw game - superclawbros.com/play -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="icon" type="image/png" href="favicon.png">
+<title>Play the Super Claw Bros Mini Game</title>
+<meta name="description" content="Play the free Super Claw Bros mini claw game. Grab prizes, beat your high score, then find a real machine in Buffalo, NY.">
+<meta property="og:title" content="Play the Super Claw Bros Mini Game">
+<meta property="og:description" content="Grab prizes, beat your high score, then find a real Super Claw Bros machine near you.">
+<meta property="og:image" content="https://superclawbros.com/og-image.png">
+<meta property="og:url" content="https://superclawbros.com/play">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Press+Start+2P&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#0a0e1a; --bg-surface:rgba(12,18,35,0.85); --blue:#0077FF; --blue-bright:#3399FF;
+    --red:#E8243C; --white:#fff; --text:#E8ECF4; --text-muted:#8A94A8; --border:rgba(255,255,255,0.08);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--text); font-family:'Inter',-apple-system,sans-serif;
+         line-height:1.6; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+  .bg-grid { position:fixed; inset:0; z-index:0; pointer-events:none;
+    background-image:linear-gradient(rgba(255,255,255,0.015) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(255,255,255,0.015) 1px,transparent 1px); background-size:48px 48px; }
+  .wrap { position:relative; z-index:1; }
+  nav { position:sticky; top:0; z-index:100; background:rgba(10,14,26,0.92);
+        backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); border-bottom:1px solid var(--border); }
+  .nav-inner { display:flex; justify-content:space-between; align-items:center;
+               max-width:1100px; margin:0 auto; padding:0.9rem 1.5rem; }
+  .nav-brand { font-family:'Press Start 2P',cursive; font-size:0.72rem; color:var(--white);
+               text-decoration:none; letter-spacing:0.04em; }
+  .nav-brand .b { color:var(--blue-bright); } .nav-brand .r { color:var(--red); }
+  .nav-cta { display:inline-block; background:var(--red); color:var(--white); padding:0.55rem 1.4rem;
+             border-radius:6px; font-weight:600; font-size:0.85rem; text-decoration:none; transition:background .2s; }
+  .nav-cta:hover { background:#cc1e34; }
+
+  .game-wrap { max-width:460px; margin:0 auto; padding:1.5rem 1rem 2rem; text-align:center; }
+  .game-title { font-family:'Press Start 2P',cursive; font-size:0.85rem; line-height:1.5; margin:0.5rem 0 0.25rem; }
+  .game-title .b { color:var(--blue-bright); } .game-title .r { color:var(--red); }
+  .game-sub { color:var(--text-muted); font-size:0.9rem; margin-bottom:1rem; }
+
+  .scorebar { display:flex; justify-content:center; gap:0.6rem; margin-bottom:0.8rem; }
+  .score-card { background:var(--bg-surface); border:1px solid var(--border); border-radius:10px;
+                padding:0.5rem 0.9rem; min-width:84px; }
+  .score-card .lbl { font-family:'Press Start 2P',cursive; font-size:0.4rem; letter-spacing:0.1em;
+                     text-transform:uppercase; color:var(--text-muted); }
+  .score-card .val { font-family:'Press Start 2P',cursive; font-size:1rem; margin-top:0.35rem; }
+  .score-card .val.blue { color:var(--blue-bright); } .score-card .val.red { color:var(--red); }
+
+  #game { width:100%; max-width:400px; height:auto; display:block; margin:0 auto;
+          border-radius:14px; touch-action:none; background:#070a14; }
+  .controls { display:flex; gap:0.6rem; justify-content:center; align-items:stretch;
+              margin:0.9rem auto 0; max-width:400px; }
+  .btn-move { flex:1; background:var(--bg-surface); border:1px solid var(--border); color:var(--white);
+              font-size:1.6rem; border-radius:12px; padding:0.7rem 0; cursor:pointer; user-select:none;
+              -webkit-user-select:none; touch-action:manipulation; }
+  .btn-move:active { background:rgba(0,119,255,0.2); border-color:var(--blue); }
+  .btn-drop { flex:2; background:var(--red); border:none; color:var(--white); font-weight:800;
+              font-family:'Press Start 2P',cursive; font-size:0.75rem; border-radius:12px; cursor:pointer;
+              letter-spacing:0.05em; touch-action:manipulation; }
+  .btn-drop:active { background:#cc1e34; transform:translateY(1px); }
+  .btn-drop:disabled { opacity:0.45; }
+  .hint { color:var(--text-muted); font-size:0.82rem; margin-top:0.7rem; }
+
+  .cta { max-width:460px; margin:1.5rem auto 0; background:var(--bg-surface); border:1px solid var(--border);
+         border-radius:14px; padding:1.4rem 1.3rem; text-align:center; }
+  .cta::before { content:''; display:block; height:3px; border-radius:3px; margin:-1.4rem -1.3rem 1.1rem;
+                 background:linear-gradient(90deg,var(--blue),var(--red)); border-radius:14px 14px 0 0; }
+  .cta h2 { font-size:1.15rem; color:var(--white); margin-bottom:0.5rem; font-weight:700; }
+  .cta p { color:var(--text-muted); font-size:0.92rem; margin-bottom:1rem; }
+  .btn-primary { display:inline-block; font-weight:700; font-size:0.95rem; padding:0.85rem 2rem;
+                 background:var(--red); color:var(--white); border-radius:8px; text-decoration:none; transition:background .2s; }
+  .btn-primary:hover { background:#cc1e34; }
+  .cta .call { display:block; margin-top:0.9rem; color:var(--text-muted); font-size:0.9rem; }
+  .cta .call a { color:var(--blue-bright); text-decoration:none; }
+  footer { max-width:1100px; margin:0 auto; padding:2rem 1.5rem; text-align:center;
+           border-top:1px solid var(--border); font-size:0.85rem; color:#5A6478; }
+  .toast { position:fixed; left:50%; top:30%; transform:translate(-50%,-50%) scale(0.6); z-index:200;
+           font-family:'Press Start 2P',cursive; font-size:1.6rem; color:var(--blue-bright); opacity:0;
+           pointer-events:none; text-shadow:0 0 18px rgba(0,119,255,0.7); transition:opacity .15s; }
+  .toast.show { opacity:1; transform:translate(-50%,-50%) scale(1); transition:transform .35s cubic-bezier(.2,1.4,.4,1), opacity .15s; }
+</style>
+</head>
+<body>
+<div class="bg-grid"></div>
+<div class="wrap">
+
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-brand"><span class="b">SUPER</span> <span class="r">CLAW</span> BROS.</a>
+    <a href="/#contact" class="nav-cta">Get a Machine</a>
+  </div>
+</nav>
+
+<div class="game-wrap">
+  <div class="game-title"><span class="b">SUPER</span> <span class="r">CLAW</span> BROS</div>
+  <div class="game-sub">Line up the claw, drop, and grab a prize. How many can you win?</div>
+
+  <div class="scorebar">
+    <div class="score-card"><div class="lbl">Prizes</div><div class="val blue" id="score">0</div></div>
+    <div class="score-card"><div class="lbl">Best</div><div class="val red" id="best">0</div></div>
+  </div>
+
+  <canvas id="game" width="400" height="540"></canvas>
+
+  <div class="controls">
+    <button class="btn-move" id="left" aria-label="Move left">&#9664;</button>
+    <button class="btn-drop" id="drop">DROP</button>
+    <button class="btn-move" id="right" aria-label="Move right">&#9654;</button>
+  </div>
+  <div class="hint">Drag the machine to aim, or use the arrows. Tap DROP (or press Space).</div>
+</div>
+
+<div class="cta">
+  <h2>Want the real thing in your spot?</h2>
+  <p>This is just for fun. The real Super Claw Bros machines go into Buffalo-area businesses at zero upfront cost, fully managed, and you earn a share of every play.</p>
+  <a href="/#contact" class="btn-primary">Get a machine for your business</a>
+  <span class="call">or call <a href="tel:+17163250758">716-325-0758</a></span>
+</div>
+
+<footer>&copy; 2026 Super Claw Bros. Buffalo, NY. Just for fun, no real prizes awarded.</footer>
+</div>
+
+<div class="toast" id="toast">WIN!</div>
+
+<script>
+(function () {
+  "use strict";
+  var cv = document.getElementById("game");
+  var ctx = cv.getContext("2d");
+  var W = cv.width, H = cv.height;
+
+  // cabinet geometry
+  var WALL = 26, TOP = 58, FLOOR = 452, CHUTE_X = WALL + 34;
+  var RAIL_Y = TOP + 14, CLAW_TOP = RAIL_Y + 18;
+  var PRIZE_EMOJI = ["🧸","🐙","⭐","🍩","🎁","👾","🦖","🐸","🍓","🦄"];
+  var COLORS = ["#0077FF","#E8243C","#3399FF","#f59e0b","#22c55e","#a855f7","#ec4899"];
+
+  var score = 0;
+  var best = parseInt(localStorage.getItem("scb_claw_best") || "0", 10) || 0;
+  document.getElementById("best").textContent = best;
+
+  var clawX = W / 2, clawY = CLAW_TOP, claw = 0; // claw: 0 open .. 1 closed
+  var state = "aim";
+  var held = null, targetChute = false;
+  var moveDir = 0;            // -1/0/1 from held buttons or keys
+  var dragging = false;
+  var prizes = [];
+
+  function rand(a, b) { return a + Math.random() * (b - a); }
+
+  function spawnPrizes() {
+    prizes = [];
+    var n = 7;
+    for (var i = 0; i < n; i++) addPrize();
+  }
+  function addPrize() {
+    var r = rand(17, 23);
+    prizes.push({
+      x: rand(WALL + 28, W - WALL - 28),
+      y: FLOOR - r + rand(-6, 4),
+      r: r,
+      emoji: PRIZE_EMOJI[(Math.random() * PRIZE_EMOJI.length) | 0],
+      color: COLORS[(Math.random() * COLORS.length) | 0],
+      won: false
+    });
+  }
+
+  function clampClaw() {
+    var m = WALL + 18;
+    if (clawX < m) clawX = m;
+    if (clawX > W - m) clawX = W - m;
+  }
+
+  // ---- input ----
+  function press(dir) { moveDir = dir; }
+  function release() { moveDir = 0; }
+  function bindHold(id, dir) {
+    var el = document.getElementById(id);
+    el.addEventListener("pointerdown", function (e) { e.preventDefault(); press(dir); });
+    el.addEventListener("pointerup", release);
+    el.addEventListener("pointerleave", release);
+    el.addEventListener("pointercancel", release);
+  }
+  bindHold("left", -1); bindHold("right", 1);
+
+  var dropBtn = document.getElementById("drop");
+  dropBtn.addEventListener("click", function () { startDrop(); });
+
+  // drag on canvas to aim
+  function canvasX(e) {
+    var rect = cv.getBoundingClientRect();
+    var cx = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left;
+    return cx * (W / rect.width);
+  }
+  cv.addEventListener("pointerdown", function (e) {
+    if (state !== "aim") return;
+    dragging = true; clawX = canvasX(e); clampClaw();
+  });
+  cv.addEventListener("pointermove", function (e) {
+    if (dragging && state === "aim") { clawX = canvasX(e); clampClaw(); }
+  });
+  window.addEventListener("pointerup", function () { dragging = false; });
+
+  window.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") press(-1);
+    else if (e.key === "ArrowRight") press(1);
+    else if (e.key === " " || e.key === "Enter") { e.preventDefault(); startDrop(); }
+  });
+  window.addEventListener("keyup", function (e) {
+    if (e.key === "ArrowLeft" || e.key === "ArrowRight") release();
+  });
+
+  function startDrop() {
+    if (state !== "aim") return;
+    state = "down"; dragging = false; moveDir = 0; dropBtn.disabled = true;
+  }
+
+  function attemptGrab() {
+    var nearest = null, nd = 1e9;
+    for (var i = 0; i < prizes.length; i++) {
+      var d = Math.abs(prizes[i].x - clawX);
+      if (d < nd) { nd = d; nearest = prizes[i]; }
+    }
+    var GRAB = 40;
+    if (nearest && nd <= GRAB) {
+      var p = 0.78 - (nd / GRAB) * 0.5;   // closer = better odds (~0.78 down to ~0.28)
+      if (Math.random() < p) { held = nearest; targetChute = true; }
+    }
+  }
+
+  function winToast() {
+    var t = document.getElementById("toast");
+    t.textContent = ["WIN!", "NICE!", "GOT IT!", "GRAB!"][(Math.random() * 4) | 0];
+    t.classList.add("show");
+    setTimeout(function () { t.classList.remove("show"); }, 650);
+  }
+
+  // ---- update ----
+  function update() {
+    if (state === "aim") {
+      if (moveDir) { clawX += moveDir * 4.2; clampClaw(); }
+    } else if (state === "down") {
+      clawY += 6;
+      if (clawY >= FLOOR - 26) { clawY = FLOOR - 26; state = "closing"; }
+    } else if (state === "closing") {
+      claw += 0.08;
+      if (claw >= 1) { claw = 1; attemptGrab(); state = "up"; }
+    } else if (state === "up") {
+      clawY -= 5;
+      if (held) { held.x = clawX; held.y = clawY + 24; }
+      if (clawY <= CLAW_TOP) { clawY = CLAW_TOP; state = targetChute ? "toChute" : "release"; }
+    } else if (state === "toChute") {
+      var dx = CHUTE_X - clawX;
+      clawX += Math.sign(dx) * Math.min(5, Math.abs(dx));
+      if (held) { held.x = clawX; held.y = clawY + 24; }
+      if (Math.abs(dx) < 2) { state = "drop"; }
+    } else if (state === "drop") {
+      claw -= 0.1;
+      if (held) { held.y += 7; }                    // prize falls into chute
+      if (claw <= 0) {
+        claw = 0;
+        if (held) {
+          var idx = prizes.indexOf(held);
+          if (idx >= 0) prizes.splice(idx, 1);
+          score++; document.getElementById("score").textContent = score;
+          if (score > best) { best = score; localStorage.setItem("scb_claw_best", best); document.getElementById("best").textContent = best; }
+          winToast();
+          while (prizes.length < 5) addPrize();
+        }
+        held = null; targetChute = false; state = "aim"; dropBtn.disabled = false;
+      }
+    } else if (state === "release") {           // missed: open and reset
+      claw -= 0.1;
+      if (claw <= 0) { claw = 0; state = "aim"; dropBtn.disabled = false; }
+    }
+  }
+
+  // ---- draw ----
+  function roundRect(x, y, w, h, r) {
+    ctx.beginPath();
+    ctx.moveTo(x + r, y);
+    ctx.arcTo(x + w, y, x + w, y + h, r);
+    ctx.arcTo(x + w, y + h, x, y + h, r);
+    ctx.arcTo(x, y + h, x, y, r);
+    ctx.arcTo(x, y, x + w, y, r);
+    ctx.closePath();
+  }
+
+  function drawClaw() {
+    // cable
+    ctx.strokeStyle = "#5A6478"; ctx.lineWidth = 3;
+    ctx.beginPath(); ctx.moveTo(clawX, RAIL_Y); ctx.lineTo(clawX, clawY); ctx.stroke();
+    // head
+    ctx.fillStyle = "#9aa6bd";
+    roundRect(clawX - 12, clawY - 10, 24, 14, 4); ctx.fill();
+    // prongs (spread when open=0, together when closed=1)
+    var spread = 16 * (1 - claw);
+    ctx.strokeStyle = "#cfd6e4"; ctx.lineWidth = 4; ctx.lineCap = "round";
+    [-1, 1].forEach(function (s) {
+      ctx.beginPath();
+      ctx.moveTo(clawX + s * 4, clawY + 2);
+      ctx.lineTo(clawX + s * (4 + spread), clawY + 16);
+      ctx.lineTo(clawX + s * (2 + spread * 0.5), clawY + 26);
+      ctx.stroke();
+    });
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    // cabinet body
+    ctx.fillStyle = "#0c1223";
+    roundRect(WALL - 14, TOP - 40, W - (WALL - 14) * 2, FLOOR - TOP + 90, 16); ctx.fill();
+    // marquee
+    ctx.fillStyle = "#0a0e1a";
+    roundRect(WALL - 6, TOP - 36, W - (WALL - 6) * 2, 26, 8); ctx.fill();
+    ctx.font = "bold 12px 'Press Start 2P', monospace"; ctx.textAlign = "center"; ctx.textBaseline = "middle";
+    ctx.fillStyle = "#3399FF"; ctx.fillText("SUPER", W / 2 - 52, TOP - 23);
+    ctx.fillStyle = "#E8243C"; ctx.fillText("CLAW", W / 2 + 6, TOP - 23);
+    ctx.fillStyle = "#E8ECF4"; ctx.fillText("BROS", W / 2 + 58, TOP - 23);
+    // glass interior
+    ctx.fillStyle = "rgba(0,119,255,0.05)";
+    roundRect(WALL, TOP, W - WALL * 2, FLOOR - TOP + 6, 10); ctx.fill();
+    ctx.strokeStyle = "rgba(255,255,255,0.10)"; ctx.lineWidth = 2;
+    roundRect(WALL, TOP, W - WALL * 2, FLOOR - TOP + 6, 10); ctx.stroke();
+    // rail
+    ctx.strokeStyle = "#1f2a44"; ctx.lineWidth = 6;
+    ctx.beginPath(); ctx.moveTo(WALL + 6, RAIL_Y); ctx.lineTo(W - WALL - 6, RAIL_Y); ctx.stroke();
+    // floor
+    ctx.fillStyle = "#10182b";
+    ctx.fillRect(WALL, FLOOR, W - WALL * 2, 6);
+    // chute hole
+    ctx.fillStyle = "#070a14";
+    roundRect(CHUTE_X - 22, FLOOR - 4, 44, 12, 5); ctx.fill();
+    ctx.fillStyle = "#5A6478"; ctx.font = "6px 'Press Start 2P', monospace";
+    ctx.fillText("PRIZE", CHUTE_X, FLOOR + 16);
+
+    // prizes
+    ctx.textAlign = "center"; ctx.textBaseline = "middle";
+    for (var i = 0; i < prizes.length; i++) {
+      var p = prizes[i];
+      ctx.beginPath(); ctx.fillStyle = p.color; ctx.globalAlpha = 0.9;
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2); ctx.fill(); ctx.globalAlpha = 1;
+      ctx.font = (p.r + 6) + "px serif";
+      ctx.fillText(p.emoji, p.x, p.y + 1);
+    }
+    drawClaw();
+  }
+
+  function loop() { update(); draw(); requestAnimationFrame(loop); }
+  spawnPrizes(); clampClaw(); loop();
+})();
+</script>
+</body>
+</html>
