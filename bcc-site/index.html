@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Buffalo Claw Co. | Claw Machine Hosting &amp; Event Rentals — Buffalo, NY</title>
+<meta name="description" content="Buffalo Claw Co. places fully managed claw machines in local businesses at zero upfront cost, and rents claw machines for parties, corporate events, and promotions across Buffalo, NY.">
+<link rel="canonical" href="https://buffaloclawmachines.com/">
+<meta property="og:title" content="Buffalo Claw Co. | Claw Machine Hosting &amp; Event Rentals — Buffalo, NY">
+<meta property="og:description" content="Fully managed claw machines for local businesses at zero upfront cost. Event rentals for parties, corporate events, and promos. Buffalo owned and operated.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://buffaloclawmachines.com/">
+<meta property="og:image" content="https://buffaloclawmachines.com/assets/hero-photo.png">
+<link rel="icon" type="image/png" href="assets/bcc-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Buffalo Claw Co.",
+  "description": "Claw machine hosting and event rentals in Buffalo, NY. Fully managed claw machine placement for local businesses and claw machine rentals for parties, corporate events, and promotions.",
+  "telephone": "+1-716-325-0758",
+  "email": "contact@bfloclaw.com",
+  "url": "https://buffaloclawmachines.com/",
+  "areaServed": { "@type": "City", "name": "Buffalo", "address": { "@type": "PostalAddress", "addressRegion": "NY" } },
+  "priceRange": "$$"
+}
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: #FFFFFF; color: #16283E; font-family: 'Archivo', 'Helvetica Neue', sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: #2E6DC0; text-decoration: none; }
+  a:hover { color: #FF6A00; }
+  input, textarea, button { font-family: 'Archivo', sans-serif; }
+  input:focus, textarea:focus { outline: 2px solid #FF6A00; outline-offset: 0; border-color: #FF6A00 !important; }
+  .mono { font-family: 'JetBrains Mono', monospace; }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes floatY { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-14px); } }
+  @keyframes floatY2 { 0%, 100% { transform: translateY(-8px); } 50% { transform: translateY(8px); } }
+  @keyframes wiggle { 0%, 100% { transform: rotate(-4deg); } 50% { transform: rotate(2deg); } }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @keyframes pulseDot { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(0.7); opacity: 0.55; } }
+  @keyframes clawDrop { 0%, 100% { transform: translateY(0); } 12% { transform: translateY(6px); } 24% { transform: translateY(0); } }
+
+  [data-reveal] { opacity: 0; transform: translateY(26px); transition: opacity 0.75s cubic-bezier(0.22,1,0.36,1), transform 0.75s cubic-bezier(0.22,1,0.36,1); }
+  [data-reveal].rv { opacity: 1; transform: translateY(0); }
+  @media (prefers-reduced-motion: reduce) {
+    [data-reveal] { opacity: 1; transform: none; transition: none; }
+    .marquee-track, .float-dot, .wiggle, .claw-drop-icon { animation: none !important; }
+  }
+
+  /* Buttons & interactive hovers (converted from design hover states) */
+  .btn-primary { background: linear-gradient(135deg, #FFA04D, #FF6A00); color: #FFFFFF; border-radius: 999px; font-weight: 700; box-shadow: 0 6px 16px -6px rgba(255,106,0,0.55); transition: transform 0.15s ease, background 0.15s ease; display: inline-block; }
+  .btn-primary:hover { background: #16385E; color: #FFFFFF; transform: translateY(-2px); }
+  .btn-outline-navy { border: 2px solid #16385E; color: #16385E; border-radius: 999px; font-weight: 700; background: #FFFFFF; transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease; display: inline-block; }
+  .btn-outline-navy:hover { background: #16385E; color: #FFFFFF; transform: translateY(-2px); }
+  .btn-outline-orange { border: 2px solid #FF6A00; color: #FF6A00; border-radius: 999px; font-weight: 700; transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease; display: inline-block; }
+  .btn-outline-orange:hover { background: #FF6A00; color: #FFFFFF; transform: translateY(-2px); }
+  .btn-footer-cta { background: #FF6A00; color: #FFFFFF; border-radius: 999px; font-weight: 700; transition: transform 0.15s ease, background 0.15s ease; display: inline-block; }
+  .btn-footer-cta:hover { background: #2E6DC0; color: #FFFFFF; transform: translateY(-2px); }
+  .nav-link { color: #3D5470; }
+  .nav-link:hover { color: #FF6A00; }
+  .announce-link { color: #10233C; text-decoration: underline; text-underline-offset: 3px; font-weight: 800; }
+  .announce-link:hover { color: #FF6A00; }
+
+  .step-card { border: 1px solid #E3EAF2; border-radius: 16px; padding: 36px 30px; display: flex; flex-direction: column; gap: 16px; background: #FFFFFF; transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease; }
+  .step-card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px -20px rgba(22,56,94,0.3); border-color: #FF6A00; }
+  .bene-card { background: #FFFFFF; border: 1px solid #E3EAF2; border-radius: 14px; padding: 26px 28px; display: flex; gap: 20px; align-items: baseline; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+  .bene-card:hover { transform: translateX(8px); box-shadow: 0 14px 28px -18px rgba(22,56,94,0.35); }
+  .rental-card { border-radius: 18px; padding: 34px 30px; display: flex; flex-direction: column; gap: 12px; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+  .rental-card.corp { border: 1px solid #FFD2AC; background: linear-gradient(180deg, #FFF1E7 0%, #FFFFFF 60%); }
+  .rental-card.corp:hover { transform: translateY(-6px) rotate(-0.5deg); box-shadow: 0 20px 40px -20px rgba(255,106,0,0.4); }
+  .rental-card.party { border: 1px solid #C6D8EC; background: linear-gradient(180deg, #EAF1F9 0%, #FFFFFF 60%); }
+  .rental-card.party:hover { transform: translateY(-6px) rotate(0.5deg); box-shadow: 0 20px 40px -20px rgba(46,109,192,0.4); }
+  .rental-card.promo { border: 1px solid #A7E4DC; background: linear-gradient(180deg, #E4F7F4 0%, #FFFFFF 60%); }
+  .rental-card.promo:hover { transform: translateY(-6px) rotate(-0.5deg); box-shadow: 0 20px 40px -20px rgba(20,184,166,0.4); }
+
+  .marquee-wrap:hover .marquee-track { animation-play-state: paused; }
+  .pill-btn { border: 1.5px solid #C6D4E4; background: #FFFFFF; color: #3D5470; border-radius: 999px; padding: 9px 18px; font-size: 14px; font-weight: 700; cursor: pointer; transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease; }
+  .pill-btn.on { border-color: #FF6A00; background: #FF6A00; color: #FFFFFF; }
+  .field-input { border: 1.5px solid #C6D4E4; border-radius: 8px; padding: 11px 14px; font-size: 15px; color: #16283E; width: 100%; box-sizing: border-box; }
+  .field-label { font-size: 13px; font-weight: 700; color: #3D5470; }
+
+  /* Responsive (the design canvas is desktop-only; these preserve it on phones) */
+  .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 64px; align-items: center; position: relative; }
+  .host-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 72px; align-items: start; }
+  .rev-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+  .contact-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 72px; align-items: start; position: relative; }
+  .three-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  .host-left { display: flex; flex-direction: column; gap: 16px; position: sticky; top: 110px; }
+  @media (max-width: 960px) {
+    .hero-grid, .host-grid, .rev-grid, .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+    .three-col { grid-template-columns: 1fr; }
+    .host-left { position: static; }
+    h1 { font-size: 42px !important; }
+    h2 { font-size: 32px !important; }
+    .nav-links { display: none !important; }
+    .section-pad { padding-top: 64px !important; padding-bottom: 64px !important; }
+  }
+</style>
+</head>
+<body>
+
+<div style="background: #FFD500; color: #10233C; text-align: center; padding: 10px 24px; font-size: 13.5px; font-weight: 800; letter-spacing: 0.03em;">
+  <span style="color: #FF6A00;">★</span> 2026 event dates are filling fast — now booking corporate events, parties &amp; promos. <a href="#rentals" class="announce-link">Reserve yours</a>
+</div>
+
+<header style="position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid #E3EAF2;">
+  <div style="max-width: 1160px; margin: 0 auto; padding: 0 32px; height: 70px; display: flex; align-items: center; justify-content: space-between; gap: 24px;">
+    <a href="#top" style="display: flex; align-items: center; gap: 12px; color: #16385E;">
+      <img src="assets/bcc-logo.png" alt="Buffalo Claw Co. mark" style="width: 46px; height: 46px; object-fit: contain; mix-blend-mode: multiply; display: block;">
+      <span style="display: flex; align-items: baseline; gap: 8px;">
+        <span style="font-weight: 900; font-size: 17px; letter-spacing: 0.07em; color: #16385E;">BUFFALO</span>
+        <span style="font-weight: 500; font-size: 17px; letter-spacing: 0.07em; color: #2E6DC0;">CLAW CO.</span>
+      </span>
+    </a>
+    <nav style="display: flex; align-items: center; gap: 28px; font-size: 14.5px; font-weight: 600;">
+      <span class="nav-links" style="display: flex; align-items: center; gap: 28px;">
+        <a href="#how" class="nav-link">How It Works</a>
+        <a href="#hosting" class="nav-link">Hosting</a>
+        <a href="#rentals" class="nav-link">Event Rentals</a>
+        <a href="#about" class="nav-link">About</a>
+      </span>
+      <a href="#contact" class="btn-primary" style="padding: 11px 22px; font-size: 14.5px;">Get Started</a>
+    </nav>
+  </div>
+</header>
+
+<section id="top" style="position: relative; overflow: hidden; background: linear-gradient(180deg, #F4F7FB 0%, #FFFFFF 100%);">
+  <div style="position: absolute; top: -120px; right: -120px; width: 420px; height: 420px; border-radius: 50%; background: radial-gradient(circle, rgba(255,106,0,0.12) 0%, rgba(255,106,0,0) 70%);"></div>
+  <div style="position: absolute; bottom: -160px; left: -100px; width: 480px; height: 480px; border-radius: 50%; background: radial-gradient(circle, rgba(46,109,192,0.10) 0%, rgba(46,109,192,0) 70%);"></div>
+  <div class="hero-grid section-pad" style="max-width: 1160px; margin: 0 auto; padding: 88px 32px 80px;">
+    <div style="display: flex; flex-direction: column; gap: 26px; animation: fadeUp 0.7s ease both;">
+      <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+        <span class="mono" style="background: #FFE8D8; color: #CC5500; font-size: 12px; font-weight: 600; letter-spacing: 0.12em; padding: 7px 14px; border-radius: 999px;">BUFFALO, NY</span>
+        <span class="mono" style="font-size: 12px; font-weight: 600; letter-spacing: 0.12em; color: #2E6DC0;">LOCALLY OWNED &amp; OPERATED</span>
+      </div>
+      <h1 style="margin: 0; font-size: 58px; line-height: 1.04; font-weight: 900; letter-spacing: -0.025em; color: #10233C; text-wrap: balance;">Turn spare square footage into <em style="font-style: italic; background: linear-gradient(100deg, #FF6A00, #FFB066); -webkit-background-clip: text; background-clip: text; color: transparent;">steady revenue.</em></h1>
+      <p style="margin: 0; font-size: 18px; line-height: 1.6; color: #45596F; max-width: 52ch; text-wrap: pretty;">Buffalo Claw Co. places fully managed claw machines in local businesses. Zero upfront cost, a footprint as small as 14&quot;&nbsp;×&nbsp;20&quot;, and a share of every play — we handle everything else.</p>
+      <div style="display: flex; gap: 14px; align-items: center; flex-wrap: wrap;">
+        <a href="#contact" class="btn-primary" style="padding: 16px 30px; font-size: 16px; box-shadow: 0 10px 24px -8px rgba(255,106,0,0.6);">Host a Machine</a>
+        <a href="#rentals" class="btn-outline-navy" style="padding: 14px 30px; font-size: 16px;">Rent for an Event</a>
+      </div>
+      <div style="font-size: 14px; color: #6B7E93;">No equipment to buy · No staffing · No maintenance on your end</div>
+    </div>
+    <div style="position: relative; animation: fadeUp 0.7s ease 0.15s both;">
+      <div class="float-dot" style="position: absolute; top: -26px; left: -26px; width: 52px; height: 52px; border-radius: 50%; background: #FF6A00; opacity: 0.9; animation: floatY 5s ease-in-out infinite;"></div>
+      <div class="float-dot" style="position: absolute; top: 40px; right: -20px; width: 30px; height: 30px; border-radius: 50%; background: #14B8A6; opacity: 0.9; animation: floatY2 6s ease-in-out infinite;"></div>
+      <div class="float-dot" style="position: absolute; bottom: 90px; right: -34px; width: 20px; height: 20px; border-radius: 50%; background: #FFD500; animation: floatY 4.2s ease-in-out 0.6s infinite;"></div>
+      <div class="float-dot" style="position: absolute; top: 150px; left: -38px; width: 16px; height: 16px; border-radius: 50%; background: #2E6DC0; opacity: 0.85; animation: floatY2 5.4s ease-in-out 1.2s infinite;"></div>
+      <div style="border-radius: 20px; overflow: hidden; box-shadow: 0 28px 56px -18px rgba(22,56,94,0.35), 0 10px 48px -6px rgba(255,106,0,0.28); aspect-ratio: 4 / 4.6; transform: rotate(1.5deg);">
+        <img src="assets/hero-photo.png" alt="Kids playing a Buffalo Claw Co. machine in a local restaurant" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+      </div>
+      <div class="wiggle" style="position: absolute; left: -28px; bottom: 30px; background: #16385E; color: #FFFFFF; border-radius: 12px; padding: 16px 20px; box-shadow: 0 14px 30px -12px rgba(16,35,60,0.5); display: flex; align-items: center; gap: 12px; animation: wiggle 6s ease-in-out infinite; transform-origin: center;">
+        <div style="font-size: 28px; font-weight: 900; color: #FFAE66; letter-spacing: -0.02em;">$0</div>
+        <div style="font-size: 13px; line-height: 1.35; color: #C9DAEE;">upfront cost<br>to your business</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee-wrap" style="background: #16385E; overflow: hidden; padding: 14px 0; border-top: 3px solid #FF6A00;">
+  <div class="marquee-track" style="display: flex; width: max-content; animation: marquee 26s linear infinite; gap: 0;">
+    <div class="mono" style="display: flex; gap: 40px; padding-right: 40px; font-size: 13px; font-weight: 600; letter-spacing: 0.12em; color: #C9DAEE; white-space: nowrap;">
+      <span>$0 UPFRONT COST</span><span style="color: #FF6A00;">✦</span>
+      <span>FOOTPRINT AS SMALL AS 14&quot; × 20&quot;</span><span style="color: #FFD500;">✦</span>
+      <span>FULLY MANAGED — STOCKING &amp; SERVICE</span><span style="color: #14B8A6;">✦</span>
+      <span>BUFFALO OWNED &amp; OPERATED</span><span style="color: #FF6A00;">✦</span>
+      <span>EVENT RENTALS NOW AVAILABLE</span><span style="color: #FFD500;">✦</span>
+    </div>
+    <div class="mono" style="display: flex; gap: 40px; padding-right: 40px; font-size: 13px; font-weight: 600; letter-spacing: 0.12em; color: #C9DAEE; white-space: nowrap;" aria-hidden="true">
+      <span>$0 UPFRONT COST</span><span style="color: #FF6A00;">✦</span>
+      <span>FOOTPRINT AS SMALL AS 14&quot; × 20&quot;</span><span style="color: #FFD500;">✦</span>
+      <span>FULLY MANAGED — STOCKING &amp; SERVICE</span><span style="color: #14B8A6;">✦</span>
+      <span>BUFFALO OWNED &amp; OPERATED</span><span style="color: #FF6A00;">✦</span>
+      <span>EVENT RENTALS NOW AVAILABLE</span><span style="color: #FFD500;">✦</span>
+    </div>
+  </div>
+</div>
+
+<section id="how" style="border-bottom: 1px solid #E3EAF2;">
+  <div class="section-pad" style="max-width: 1160px; margin: 0 auto; padding: 100px 32px;">
+    <div data-reveal style="max-width: 640px; display: flex; flex-direction: column; gap: 14px; margin-bottom: 60px;">
+      <div class="mono" style="font-size: 12px; font-weight: 600; letter-spacing: 0.14em; color: #FF6A00;">HOW IT WORKS</div>
+      <h2 style="margin: 0; font-size: 40px; font-weight: 900; letter-spacing: -0.02em; color: #10233C;">Three steps from handshake to revenue</h2>
+    </div>
+    <div data-reveal class="three-col">
+      <div class="step-card">
+        <div class="mono" style="width: 52px; height: 52px; border-radius: 14px; background: #FFE8D8; color: #FF6A00; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 20px;">01</div>
+        <h3 style="margin: 0; font-size: 21px; font-weight: 800; color: #10233C;">We place a machine</h3>
+        <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #45596F;">We deliver, install, and stock a machine at your location with quality prizes. No cost, no disruption to your floor.</p>
+      </div>
+      <div class="step-card">
+        <div class="mono" style="width: 52px; height: 52px; border-radius: 14px; background: #E3EDF8; color: #2E6DC0; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 20px;">02</div>
+        <h3 style="margin: 0; font-size: 21px; font-weight: 800; color: #10233C;">Your guests play</h3>
+        <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #45596F;">Customers play with dollars or quarters while they wait, browse, or hang out. Frequent wins keep them coming back.</p>
+      </div>
+      <div class="step-card">
+        <div class="mono" style="width: 52px; height: 52px; border-radius: 14px; background: #D7F4F0; color: #0E9384; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 20px;">03</div>
+        <h3 style="margin: 0; font-size: 21px; font-weight: 800; color: #10233C;">You collect your share</h3>
+        <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #45596F;">You earn a share of every play with convenient cash payouts. We handle restocking, maintenance, and service.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="claw-scene" style="overflow: hidden; background: #FFFFFF; border-top: 1px solid #E3EAF2;">
+  <div style="max-width: 1160px; margin: 0 auto; padding: 48px 32px 40px; display: flex; flex-direction: column; align-items: center; gap: 20px;">
+    <div class="mono" style="font-size: 12px; font-weight: 600; letter-spacing: 0.14em; color: #6B7E93;">FULLY MANAGED — WE DO THE HEAVY LIFTING</div>
+    <div style="position: relative; width: 620px; max-width: 100%; height: 340px;">
+      <div style="position: absolute; top: 24px; left: 0; right: 0; height: 10px; background: #16385E; border-radius: 999px;"></div>
+      <div style="position: absolute; top: 16px; left: 50%; transform: translateX(-50%); width: 56px; height: 26px; background: #FF6A00; border-radius: 8px; box-shadow: 0 6px 14px -6px rgba(255,106,0,0.6);"></div>
+      <div id="claw-cable" style="position: absolute; top: 38px; left: 50%; margin-left: -4px; width: 8px; height: 26px; background: #16385E;"></div>
+      <div id="claw-rig" style="position: absolute; top: 64px; left: 50%; margin-left: -50px; width: 100px; height: 130px;">
+        <div style="position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 64px; height: 34px; background: #16385E; border-radius: 10px; display: flex; align-items: center; justify-content: center; gap: 26px;">
+          <span style="width: 7px; height: 7px; border-radius: 50%; background: #FFFFFF; opacity: 0.85;"></span>
+          <span style="width: 7px; height: 7px; border-radius: 50%; background: #FFFFFF; opacity: 0.85;"></span>
+        </div>
+        <div style="position: absolute; top: 30px; left: 50%; margin-left: -6px; width: 12px; height: 58px; background: #16385E; clip-path: polygon(0 0, 100% 0, 72% 100%, 28% 100%); border-radius: 0 0 6px 6px;"></div>
+        <div id="claw-arm-l" style="position: absolute; top: 28px; left: 12px; width: 34px; height: 66px; border-left: 9px solid #16385E; border-bottom: 9px solid #16385E; border-radius: 0 0 0 34px; transform: rotate(24deg); transform-origin: top right;"></div>
+        <div id="claw-arm-r" style="position: absolute; top: 28px; right: 12px; width: 34px; height: 66px; border-right: 9px solid #16385E; border-bottom: 9px solid #16385E; border-radius: 0 0 34px 0; transform: rotate(-24deg); transform-origin: top left;"></div>
+      </div>
+      <div style="position: absolute; bottom: 24px; left: 0; right: 0; height: 3px; background: #E3EAF2; border-radius: 999px;"></div>
+      <div style="position: absolute; bottom: 27px; left: 50%; margin-left: -140px; width: 36px; height: 36px; border-radius: 50%; background: #14B8A6; box-shadow: inset -5px -7px 0 rgba(0,0,0,0.1);"></div>
+      <div style="position: absolute; bottom: 27px; left: 50%; margin-left: -96px; width: 30px; height: 30px; border-radius: 50%; background: #FFD500; box-shadow: inset -5px -6px 0 rgba(0,0,0,0.1);"></div>
+      <div style="position: absolute; bottom: 27px; left: 50%; margin-left: 62px; width: 34px; height: 34px; border-radius: 50%; background: #2E6DC0; box-shadow: inset -5px -7px 0 rgba(0,0,0,0.12);"></div>
+      <div style="position: absolute; bottom: 27px; left: 50%; margin-left: 110px; width: 26px; height: 26px; border-radius: 50%; background: #FFC08A; box-shadow: inset -4px -5px 0 rgba(0,0,0,0.08);"></div>
+      <div id="claw-ball" style="position: absolute; bottom: 27px; left: 50%; margin-left: -21px; width: 42px; height: 42px; border-radius: 50%; background: #FF6A00; box-shadow: inset -6px -8px 0 rgba(0,0,0,0.12);">
+        <span style="position: absolute; top: 8px; left: 9px; width: 11px; height: 11px; border-radius: 50%; background: rgba(255,255,255,0.55);"></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="hosting" style="background: #F4F7FB; border-bottom: 1px solid #E3EAF2;">
+  <div class="host-grid section-pad" style="max-width: 1160px; margin: 0 auto; padding: 100px 32px;">
+    <div data-reveal class="host-left">
+      <div class="mono" style="font-size: 12px; font-weight: 600; letter-spacing: 0.14em; color: #FF6A00;">FOR YOUR LOCATION</div>
+      <h2 style="margin: 0; font-size: 40px; font-weight: 900; letter-spacing: -0.02em; color: #10233C; text-wrap: balance;">Small footprint. Real, <em style="font-style: italic; color: #FF6A00;">passive</em> income.</h2>
+      <p style="margin: 0; font-size: 16.5px; line-height: 1.6; color: #45596F; text-wrap: pretty;">Restaurants, breweries, barbershops, laundromats, retail — anywhere people wait or linger is a fit.</p>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 16px;">
+      <div data-reveal class="bene-card">
+        <div class="mono" style="font-size: 12px; font-weight: 600; color: #FF6A00; white-space: nowrap; background: #FFE8D8; padding: 5px 10px; border-radius: 999px;">COMPACT</div>
+        <div style="display: flex; flex-direction: column; gap: 6px;">
+          <h3 style="margin: 0; font-size: 18px; font-weight: 800; color: #10233C;">Fits almost anywhere</h3>
+          <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #45596F;">A corner, next to the register, an unused nook — our compact machines start at 14&quot; × 20&quot;, so you never sacrifice valuable floor space.</p>
+        </div>
+      </div>
+      <div data-reveal class="bene-card">
+        <div class="mono" style="font-size: 12px; font-weight: 600; color: #2E6DC0; white-space: nowrap; background: #E3EDF8; padding: 5px 10px; border-radius: 999px;">PASSIVE</div>
+        <div style="display: flex; flex-direction: column; gap: 6px;">
+          <h3 style="margin: 0; font-size: 18px; font-weight: 800; color: #10233C;">Zero effort on your part</h3>
+          <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #45596F;">No staffing, no stocking, no repairs. Plug it in and let it work — we take care of the rest on a regular service schedule.</p>
+        </div>
+      </div>
+      <div data-reveal class="bene-card">
+        <div class="mono" style="font-size: 12px; font-weight: 600; color: #0E9384; white-space: nowrap; background: #D7F4F0; padding: 5px 10px; border-radius: 999px;">STICKY</div>
+        <div style="display: flex; flex-direction: column; gap: 6px;">
+          <h3 style="margin: 0; font-size: 18px; font-weight: 800; color: #10233C;">Guests stay longer</h3>
+          <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #45596F;">A claw machine gives customers something fun to do while they wait — keeping families in your business longer and happier.</p>
+        </div>
+      </div>
+      <div data-reveal class="bene-card">
+        <div class="mono" style="font-size: 12px; font-weight: 600; color: #B7860B; white-space: nowrap; background: #FFF1C9; padding: 5px 10px; border-radius: 999px;">LOCAL</div>
+        <div style="display: flex; flex-direction: column; gap: 6px;">
+          <h3 style="margin: 0; font-size: 18px; font-weight: 800; color: #10233C;">Fast, Buffalo-based support</h3>
+          <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #45596F;">We're right here in Buffalo — restocks and service calls happen in days, not weeks. You deal with an owner, not a call center.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background: #16385E; background-image: radial-gradient(rgba(255,255,255,0.06) 1.5px, transparent 1.5px); background-size: 28px 28px;">
+  <div class="rev-grid section-pad" style="max-width: 1160px; margin: 0 auto; padding: 92px 32px;">
+    <div style="display: flex; flex-direction: column; gap: 16px;">
+      <div class="mono" style="font-size: 12px; font-weight: 600; letter-spacing: 0.14em; color: #FFAE66;">REVENUE MODEL</div>
+      <h2 style="margin: 0; font-size: 40px; font-weight: 900; letter-spacing: -0.02em; color: #FFFFFF; text-wrap: balance;">A transparent split that benefits both sides</h2>
+      <p style="margin: 0; font-size: 16.5px; line-height: 1.6; color: #B7CBE2; text-wrap: pretty;">We provide the machine, the prizes, and the upkeep. You provide the spot. Every play goes straight into the coin box, and you get your share in convenient cash payouts.</p>
+    </div>
+    <div data-reveal style="display: flex; flex-direction: column; gap: 0;">
+      <div style="display: flex; gap: 16px; padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.14); align-items: baseline;">
+        <div style="color: #FF6A00; font-weight: 900; font-size: 17px;">✓</div>
+        <div style="font-size: 16px; line-height: 1.55; color: #E7EEF7;"><strong style="color: #FFFFFF;">Zero upfront investment</strong> — machine, prizes, and maintenance are all on us</div>
+      </div>
+      <div style="display: flex; gap: 16px; padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.14); align-items: baseline;">
+        <div style="color: #FF6A00; font-weight: 900; font-size: 17px;">✓</div>
+        <div style="font-size: 16px; line-height: 1.55; color: #E7EEF7;"><strong style="color: #FFFFFF;">Revenue from every play</strong> — a clear share, paid out in cash</div>
+      </div>
+      <div style="display: flex; gap: 16px; padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.14); align-items: baseline;">
+        <div style="color: #FF6A00; font-weight: 900; font-size: 17px;">✓</div>
+        <div style="font-size: 16px; line-height: 1.55; color: #E7EEF7;"><strong style="color: #FFFFFF;">Fully managed</strong> — restocking, repairs, and prize quality handled for you</div>
+      </div>
+      <div style="display: flex; gap: 16px; padding: 20px 0; align-items: baseline;">
+        <div style="color: #FF6A00; font-weight: 900; font-size: 17px;">✓</div>
+        <div style="font-size: 16px; line-height: 1.55; color: #E7EEF7;"><strong style="color: #FFFFFF;">Local accountability</strong> — Buffalo-owned, so service is always fast</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="rentals" style="border-bottom: 1px solid #E3EAF2; position: relative; overflow: hidden;">
+  <div class="float-dot" style="position: absolute; top: 60px; right: 8%; width: 26px; height: 26px; border-radius: 50%; background: #FFC08A; animation: floatY 5s ease-in-out infinite;"></div>
+  <div class="float-dot" style="position: absolute; bottom: 80px; left: 5%; width: 18px; height: 18px; border-radius: 50%; background: #B9CFE8; animation: floatY2 6s ease-in-out infinite;"></div>
+  <div class="section-pad" style="max-width: 1160px; margin: 0 auto; padding: 100px 32px; position: relative;">
+    <div data-reveal style="display: flex; justify-content: space-between; align-items: flex-end; gap: 48px; margin-bottom: 60px; flex-wrap: wrap;">
+      <div style="max-width: 640px; display: flex; flex-direction: column; gap: 14px;">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <span class="mono wiggle" style="background: #FF6A00; color: #FFFFFF; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; padding: 5px 12px; border-radius: 999px; animation: wiggle 5s ease-in-out infinite;">NEW</span>
+          <span class="mono" style="font-size: 12px; font-weight: 600; letter-spacing: 0.14em; color: #FF6A00;">EVENT RENTALS</span>
+        </div>
+        <h2 style="margin: 0; font-size: 40px; font-weight: 900; letter-spacing: -0.02em; color: #10233C; text-wrap: balance;">Bring the claw to your next event</h2>
+        <p style="margin: 0; font-size: 16.5px; line-height: 1.6; color: #45596F; text-wrap: pretty;">Rent a Buffalo Claw Co. machine for the day or the weekend. We deliver, set up, stock it, and pick it up — you just watch people line up.</p>
+      </div>
+      <a href="#contact" class="btn-outline-orange" style="padding: 13px 28px; font-size: 15px; white-space: nowrap;">Ask About Rentals</a>
+    </div>
+    <div data-reveal class="three-col">
+      <div class="rental-card corp">
+        <div class="claw-drop-icon" style="font-size: 26px; animation: clawDrop 4s ease-in-out infinite; width: fit-content; color: #FF6A00; font-weight: 900;">⌄</div>
+        <h3 style="margin: 0; font-size: 21px; font-weight: 800; color: #10233C;">Corporate events</h3>
+        <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #45596F;">Holiday parties, team offsites, client appreciation days. A claw machine is the icebreaker that works the whole room.</p>
+      </div>
+      <div class="rental-card party">
+        <div class="claw-drop-icon" style="font-size: 26px; animation: clawDrop 4s ease-in-out 0.8s infinite; width: fit-content; color: #2E6DC0; font-weight: 900;">⌄</div>
+        <h3 style="margin: 0; font-size: 21px; font-weight: 800; color: #10233C;">Parties &amp; celebrations</h3>
+        <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #45596F;">Birthdays, graduations, weddings, reunions. Entertainment for every age — set to free-play so every guest wins.</p>
+      </div>
+      <div class="rental-card promo">
+        <div class="claw-drop-icon" style="font-size: 26px; animation: clawDrop 4s ease-in-out 1.6s infinite; width: fit-content; color: #0E9384; font-weight: 900;">⌄</div>
+        <h3 style="margin: 0; font-size: 21px; font-weight: 800; color: #10233C;">Promotional events</h3>
+        <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #45596F;">Grand openings, trade shows, brand activations. Stock the machine with <strong style="color: #FF6A00;">your custom branded prizes</strong> and turn foot traffic into fans.</p>
+      </div>
+    </div>
+    <div data-reveal style="margin-top: 28px; border: 2px dashed #FFC08A; border-radius: 14px; padding: 22px 30px; display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; background: #FFFBF8;">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <span style="width: 9px; height: 9px; border-radius: 50%; background: #FF6A00; animation: pulseDot 1.6s ease-in-out infinite; display: inline-block; flex-shrink: 0;"></span>
+        <div style="font-size: 15px; color: #45596F;">Rental packages are tailored to your event, and <strong style="color: #10233C;">dates go first come, first served — lock yours in early.</strong></div>
+      </div>
+      <a href="tel:+17163250758" class="mono" style="font-size: 14px; font-weight: 600; color: #FF6A00;">716-325-0758</a>
+    </div>
+  </div>
+</section>
+
+<section id="about" style="background: #FFFFFF; border-top: 1px solid #E3EAF2; position: relative; overflow: hidden;">
+  <div class="float-dot" style="position: absolute; top: 80px; right: 6%; width: 22px; height: 22px; border-radius: 50%; background: #FFD500; animation: floatY 5.2s ease-in-out infinite;"></div>
+  <div class="section-pad" style="max-width: 820px; margin: 0 auto; padding: 100px 32px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 20px;">
+    <div data-reveal style="display: flex; flex-direction: column; align-items: center; gap: 18px;">
+      <div class="mono" style="font-size: 12px; font-weight: 600; letter-spacing: 0.14em; color: #FF6A00;">ABOUT THE COMPANY</div>
+      <h2 style="margin: 0; font-size: 40px; font-weight: 900; letter-spacing: -0.02em; color: #10233C; text-wrap: balance;">Claw machines are our specialty</h2>
+      <p style="margin: 0; font-size: 17px; line-height: 1.65; color: #45596F; text-wrap: pretty; max-width: 62ch;">With over a decade of amusement experience, we're passionate about bringing a fun, classic prize game to more businesses. Focusing exclusively on claw machines lets us deliver the best possible experience to your customers — every machine dialed in, every prize worth winning.</p>
+      <div style="display: flex; gap: 14px; flex-wrap: wrap; justify-content: center;">
+        <div style="background: #F4F7FB; border: 1px solid #E3EAF2; border-radius: 999px; padding: 10px 20px; font-size: 14px; font-weight: 700; color: #16385E;">10+ years of amusement experience</div>
+        <div style="background: #F4F7FB; border: 1px solid #E3EAF2; border-radius: 999px; padding: 10px 20px; font-size: 14px; font-weight: 700; color: #16385E;">Locally owned &amp; operated</div>
+        <div style="background: #F4F7FB; border: 1px solid #E3EAF2; border-radius: 999px; padding: 10px 20px; font-size: 14px; font-weight: 700; color: #16385E;">Claw machines, exclusively</div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 14px; margin-top: 6px;">
+        <img src="assets/bcc-logo.png" alt="Buffalo Claw Co. mark" style="width: 54px; height: 54px; object-fit: contain; mix-blend-mode: multiply; display: block;">
+        <div style="font-size: 14px; color: #6B7E93; line-height: 1.5; text-align: left;">Proudly serving Buffalo, NY<br>and the surrounding area</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="background: #F4F7FB; position: relative; overflow: hidden;">
+  <div style="position: absolute; top: -100px; right: -100px; width: 360px; height: 360px; border-radius: 50%; background: radial-gradient(circle, rgba(255,106,0,0.10) 0%, rgba(255,106,0,0) 70%);"></div>
+  <div class="contact-grid section-pad" style="max-width: 1160px; margin: 0 auto; padding: 100px 32px;">
+    <div style="display: flex; flex-direction: column; gap: 16px;">
+      <div class="mono" style="font-size: 12px; font-weight: 600; letter-spacing: 0.14em; color: #FF6A00;">GET STARTED</div>
+      <h2 style="margin: 0; font-size: 40px; font-weight: 900; letter-spacing: -0.02em; color: #10233C;">Interested? <em style="font-style: italic; color: #FF6A00;">Let's talk.</em></h2>
+      <p style="margin: 0; font-size: 16.5px; line-height: 1.6; color: #45596F; text-wrap: pretty;">We have machines ready for your business — and event dates open on the calendar. Tell us a little about what you're looking for.</p>
+      <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 12px;">
+        <a href="tel:+17163250758" style="font-size: 16px; font-weight: 700; color: #16385E;">716-325-0758</a>
+        <a href="mailto:contact@bfloclaw.com" style="font-size: 16px; font-weight: 700; color: #16385E;">contact@bfloclaw.com</a>
+      </div>
+    </div>
+    <div id="contact-card">
+      <form id="interest-form" data-reveal class="rv" style="background: #FFFFFF; border: 1px solid #E3EAF2; border-radius: 18px; padding: 36px; display: flex; flex-direction: column; gap: 20px; box-shadow: 0 20px 48px -24px rgba(22,56,94,0.3);">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+          <div style="display: flex; flex-direction: column; gap: 7px;">
+            <label class="field-label" for="f-name">Name</label>
+            <input class="field-input" id="f-name" name="name" type="text" placeholder="Your name" required>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 7px;">
+            <label class="field-label" for="f-biz">Business or event</label>
+            <input class="field-input" id="f-biz" name="business_or_event" type="text" placeholder="e.g. Elmwood Pizzeria">
+          </div>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+          <div style="display: flex; flex-direction: column; gap: 7px;">
+            <label class="field-label" for="f-email">Email</label>
+            <input class="field-input" id="f-email" name="email" type="email" placeholder="you@business.com">
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 7px;">
+            <label class="field-label" for="f-phone">Phone</label>
+            <input class="field-input" id="f-phone" name="phone" type="tel" placeholder="(716) 555-0123">
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <span class="field-label">Preferred contact method</span>
+          <div id="method-pills" style="display: flex; gap: 10px; flex-wrap: wrap;">
+            <button type="button" class="pill-btn on" data-group="method" data-value="Email">Email</button>
+            <button type="button" class="pill-btn" data-group="method" data-value="Call">Call</button>
+            <button type="button" class="pill-btn" data-group="method" data-value="Text">Text</button>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <span class="field-label">Preferred time of day</span>
+          <div id="time-pills" style="display: flex; gap: 10px; flex-wrap: wrap;">
+            <button type="button" class="pill-btn on" data-group="time" data-value="Morning">Morning</button>
+            <button type="button" class="pill-btn" data-group="time" data-value="Afternoon">Afternoon</button>
+            <button type="button" class="pill-btn" data-group="time" data-value="Evening">Evening</button>
+          </div>
+        </div>
+        <button type="submit" class="btn-primary" style="border: none; padding: 16px; font-size: 16px; font-weight: 700; cursor: pointer; width: 100%; box-shadow: 0 10px 24px -8px rgba(255,106,0,0.55);">Submit Interest</button>
+        <div id="form-error" style="display: none; font-size: 14px; color: #B3261E; text-align: center;"></div>
+      </form>
+      <div id="form-success" style="display: none; background: #FFFFFF; border: 1px solid #E3EAF2; border-radius: 18px; padding: 64px 36px; flex-direction: column; gap: 12px; align-items: center; text-align: center; box-shadow: 0 20px 48px -24px rgba(22,56,94,0.3); animation: fadeUp 0.5s ease both;">
+        <div style="width: 52px; height: 52px; border-radius: 50%; background: #FF6A00; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 900;">✓</div>
+        <h3 style="margin: 0; font-size: 24px; font-weight: 800; color: #10233C;">Thanks — we'll be in touch.</h3>
+        <p style="margin: 0; font-size: 15px; color: #45596F;">Expect to hear from us within one business day.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer style="background: #10233C; border-top: 3px solid #FF6A00;">
+  <div style="max-width: 1160px; margin: 0 auto; padding: 56px 32px 40px; display: flex; flex-direction: column; gap: 36px;">
+    <div style="display: flex; justify-content: space-between; align-items: center; gap: 32px; flex-wrap: wrap;">
+      <div style="display: flex; align-items: center; gap: 16px;">
+        <div style="width: 56px; height: 56px; border-radius: 12px; background: #FFFFFF; display: flex; align-items: center; justify-content: center;"><img src="assets/bcc-logo.png" alt="Buffalo Claw Co. logo" style="width: 48px; height: 48px; object-fit: contain; display: block;"></div>
+        <div style="display: flex; flex-direction: column; gap: 2px;">
+          <div style="color: #FFFFFF; font-weight: 900; letter-spacing: 0.08em; font-size: 15px;">BUFFALO CLAW CO.</div>
+          <div style="color: #7E97B3; font-size: 13px;">Claw machine hosting &amp; event rentals — Buffalo, NY</div>
+        </div>
+      </div>
+      <div style="display: flex; gap: 28px; align-items: center; flex-wrap: wrap;">
+        <a href="tel:+17163250758" style="color: #C9DAEE; font-size: 14.5px; font-weight: 600;">716-325-0758</a>
+        <a href="mailto:contact@bfloclaw.com" style="color: #C9DAEE; font-size: 14.5px; font-weight: 600;">contact@bfloclaw.com</a>
+        <a href="#contact" class="btn-footer-cta" style="padding: 11px 22px; font-size: 14px;">Get Started</a>
+      </div>
+    </div>
+    <div style="border-top: 1px solid #24405F; padding-top: 24px; display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; font-size: 13px; color: #7E97B3;">
+      <div>© 2026 Buffalo Claw Co. Buffalo, NY. All rights reserved.</div>
+      <div>Formerly Super Claw Bros.</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+
+  // ---- Config: set the Formspree form ID to activate the contact form ----
+  var FORMSPREE_ID = ''; // e.g. 'mabcdefg' -> posts to https://formspree.io/f/mabcdefg
+  var FALLBACK_EMAIL = 'contact@bfloclaw.com';
+
+  // ---- Scroll reveals ----
+  var revealEls = document.querySelectorAll('[data-reveal]');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('rv'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.08 });
+    revealEls.forEach(function (el) { io.observe(el); });
+  } else {
+    revealEls.forEach(function (el) { el.classList.add('rv'); });
+  }
+
+  // ---- Claw scroll scene ----
+  var scene = document.getElementById('claw-scene');
+  var rig = document.getElementById('claw-rig');
+  var cable = document.getElementById('claw-cable');
+  var armL = document.getElementById('claw-arm-l');
+  var armR = document.getElementById('claw-arm-r');
+  var ball = document.getElementById('claw-ball');
+  var raf = 0;
+
+  function ease(t) { return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2; }
+
+  function updateClaw() {
+    raf = 0;
+    if (!scene || !rig) return;
+    var r = scene.getBoundingClientRect();
+    var vh = window.innerHeight || 800;
+    var p = Math.max(0, Math.min(1, (vh * 0.92 - r.top) / (r.height + vh * 0.45)));
+    var DROP = 146;
+    var descend = ease(Math.min(p / 0.45, 1));
+    var close = Math.max(0, Math.min(1, (p - 0.46) / 0.12));
+    var lift = ease(Math.max(0, Math.min(1, (p - 0.62) / 0.34)));
+    var dy = descend * DROP - lift * DROP;
+    rig.style.transform = 'translateY(' + dy + 'px)';
+    cable.style.height = (26 + dy) + 'px';
+    var angle = 24 - close * 21;
+    armL.style.transform = 'rotate(' + angle + 'deg)';
+    armR.style.transform = 'rotate(' + (-angle) + 'deg)';
+    ball.style.transform = close === 1 ? 'translateY(' + (-lift * DROP) + 'px)' : 'translateY(0)';
+  }
+
+  function onScroll() { if (!raf) raf = requestAnimationFrame(updateClaw); }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  updateClaw();
+
+  // ---- Contact form pills ----
+  var picked = { method: 'Email', time: 'Morning' };
+  document.querySelectorAll('.pill-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var group = btn.getAttribute('data-group');
+      picked[group] = btn.getAttribute('data-value');
+      document.querySelectorAll('.pill-btn[data-group="' + group + '"]').forEach(function (b) {
+        b.classList.toggle('on', b === btn);
+      });
+    });
+  });
+
+  // ---- Submit ----
+  var form = document.getElementById('interest-form');
+  var success = document.getElementById('form-success');
+  var errorBox = document.getElementById('form-error');
+
+  function showSuccess() {
+    form.style.display = 'none';
+    success.style.display = 'flex';
+  }
+
+  form.addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    errorBox.style.display = 'none';
+    var data = {
+      name: document.getElementById('f-name').value.trim(),
+      business_or_event: document.getElementById('f-biz').value.trim(),
+      email: document.getElementById('f-email').value.trim(),
+      phone: document.getElementById('f-phone').value.trim(),
+      preferred_contact: picked.method,
+      preferred_time: picked.time
+    };
+    if (!data.email && !data.phone) {
+      errorBox.textContent = 'Please include an email or a phone number so we can reach you.';
+      errorBox.style.display = 'block';
+      return;
+    }
+    if (FORMSPREE_ID) {
+      fetch('https://formspree.io/f/' + FORMSPREE_ID, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(data)
+      }).then(function (res) {
+        if (res.ok) { showSuccess(); }
+        else { throw new Error('bad status'); }
+      }).catch(function () {
+        errorBox.textContent = 'Something went wrong sending the form. Call or email us instead — 716-325-0758.';
+        errorBox.style.display = 'block';
+      });
+    } else {
+      // Not wired to a form backend yet: open a prefilled email instead.
+      var body = 'Name: ' + data.name + '\nBusiness or event: ' + data.business_or_event +
+        '\nEmail: ' + data.email + '\nPhone: ' + data.phone +
+        '\nPreferred contact: ' + data.preferred_contact + '\nPreferred time: ' + data.preferred_time;
+      window.location.href = 'mailto:' + FALLBACK_EMAIL +
+        '?subject=' + encodeURIComponent('Buffalo Claw Co. — interest from ' + (data.name || 'website visitor')) +
+        '&body=' + encodeURIComponent(body);
+      showSuccess();
+    }
+  });
+})();
+</script>
+</body>
+</html>
