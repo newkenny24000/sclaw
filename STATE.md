@@ -1,6 +1,6 @@
 # Super Claw Bros marketing site — STATE
 
-_Updated: 2026-07-26_
+_Updated: 2026-08-24_
 
 Durable "what's hot" for the SCB web surfaces. Sub-effort of the SCB venture (`../super-claw-bros/`); it carries no metric of its own. Venture status, ICP, and blockers live up the parent, not here.
 
@@ -8,8 +8,8 @@ Durable "what's hot" for the SCB web surfaces. Sub-effort of the SCB venture (`.
 **REBRAND SHIPPED (2026-07-26): Super Claw Bros → Buffalo Claw Co.** **https://buffaloclawmachines.com is LIVE** — built at `bcc-site/` from Ken's Claude Design project, deployed to the DO droplet (68.183.19.160, CloudPanel static site, site user `bccsite`, pw in droplet `/root/.bccsite_pw`), Cloudflare-proxied DNS, LE cert on origin. Contact form live via **Formspree `mpqjlpwb`** (verified end-to-end from the live domain). **bfloclaw.com** = short/email domain: Google Workspace verified (Gmail live), web 301-redirects every path to buffaloclawmachines.com (droplet vhost, own LE cert, site user `bfloclaw`). The old `superclawbros.com` pages (repo root) stay live for now; retire after the brand fully lands.
 
 ## What's hot
-- **`bcc-site/`** — Buffalo Claw Co one-pager: hosting pitch + event rentals + contact form (name/business/email/phone + contact-method/time pills). Verify anytime: `python bcc-site/verify_site.py` (Playwright, desktop+mobile).
-- Brand facts: **Buffalo Claw Co.**, phone 716-325-0758, email contact@bfloclaw.com, footer "Formerly Super Claw Bros." Site: SEO meta + OG + LocalBusiness schema (GBP-ready).
+- **`bcc-site/`** — Buffalo Claw Co one-pager: hosting pitch + event rentals + contact form (name/business/email/phone + contact-method/time pills + free-text **Details**). Verify anytime: `python bcc-site/verify_site.py` (Playwright, desktop+mobile).
+- Brand facts: **Buffalo Claw Co.**, phone 716-325-0758, email contact@bfloclaw.com. Site: SEO meta + OG + LocalBusiness schema (GBP-ready).
 - Old-brand pages still in repo root: `index.html`, `play.html`, `thanks.html`, `card.html`, `print.html`.
 
 ## Blockers / open decisions (all Ken)
@@ -19,10 +19,11 @@ Durable "what's hot" for the SCB web surfaces. Sub-effort of the SCB venture (`.
 4. Decide retirement plan for superclawbros.com (redirect to the new brand once outreach materials are swapped).
 
 ## Next action
-- Update outreach templates/one-pagers/cards to Buffalo Claw Co (coordinate up through SCB parent; templates live in `../super-claw-bros/outreach/`).
+- ~~Update outreach templates~~ — DONE 2026-08-19 by the SCB parent (templates.py + templates.md + staged batches now Buffalo Claw Co. / contact@bfloclaw.com / buffaloclawmachines.com). One-pagers/cards still pending the DBA filing before print.
 - GBP for Buffalo Claw Co once DBA is filed (zero inbound surface today; the rental searches are uncontested locally).
 
 ## Recently done
+- 2026-08-24: dropped the "Formerly Super Claw Bros." footer line (rebrand has landed) and added a **Details** textarea to the contact form (posts as `details` to Formspree; also in the mailto fallback). Deployed to the droplet, verified live. Backup of the previous live file at `root@68.183.19.160:/root/index.html.bak-20260824`. Also fixed a flaky fixed-400ms wait in `verify_site.py` (now waits on the success card; the Formspree round-trip is slower than that).
 - Added `/play` mobile HTML5 mini claw game (touch-drag aim, DROP, local best score), brand-matched, self-contained, no backend.
 - Added phone + email to contact section and footer.
 - Added pizzeria photo of kids at the machine below the hero.
