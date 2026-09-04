@@ -9,6 +9,7 @@ Durable "what's hot" for the SCB web surfaces. Sub-effort of the SCB venture (`.
 
 ## What's hot
 - **`bcc-site/`** — Buffalo Claw Co one-pager: hosting pitch + event rentals + contact form (name/business/email/phone + contact-method/time pills + free-text **Details**). Verify anytime: `python bcc-site/verify_site.py` (Playwright, desktop+mobile).
+- **Lead notifier (2026-09-04)** -- `bcc-site/lead_notify/`: form submissions POST to `/api/lead` on the droplet (stdlib service, loopback 8580, systemd `bcc_lead`, nginx location in the vhost) which pushes name/phone/details to Ken's ntfy topic as a high-priority tap-to-call alert. Why: Formspree mail sat in Gmail's Updates tab; two leads in two weeks with zero marketing. Deploy/redeploy: `powershell -File bcc-site\lead_notify\deploy_lead.ps1` (Ken runs it; the orchestrator session cannot write to the droplet). Test submissions (email @example.com) log but never push. Log: `/home/bccsite/logs/lead.log`. CloudPanel vhost saves from the UI can drop the nginx location; rerun the deploy script to restore it.
 - Brand facts: **Buffalo Claw Co.**, phone 716-325-0758, email contact@bfloclaw.com. Site: SEO meta + OG + LocalBusiness schema (GBP-ready).
 - Old-brand pages still in repo root: `index.html`, `play.html`, `thanks.html`, `card.html`, `print.html`.
 
