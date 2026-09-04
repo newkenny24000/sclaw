@@ -1,0 +1,21 @@
+[Unit]
+Description=Buffalo Claw Co lead notifier (form -> ntfy, loopback 8580)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=bccsite
+Group=bccsite
+EnvironmentFile=/etc/bcc_lead.env
+ExecStart=/usr/bin/python3 /opt/bcc_lead/bcc_lead.py
+Restart=always
+RestartSec=3
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=/home/bccsite/logs
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

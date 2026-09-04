@@ -83,6 +83,7 @@
   .pill-btn.on { border-color: #FF6A00; background: #FF6A00; color: #FFFFFF; }
   .field-input { border: 1.5px solid #C6D4E4; border-radius: 8px; padding: 11px 14px; font-size: 15px; color: #16283E; width: 100%; box-sizing: border-box; }
   .field-label { font-size: 13px; font-weight: 700; color: #3D5470; }
+  textarea.field-input { font-family: inherit; line-height: 1.5; resize: vertical; min-height: 96px; }
 
   /* Responsive (the design canvas is desktop-only; these preserve it on phones) */
   .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 64px; align-items: center; position: relative; }
@@ -415,6 +416,10 @@
             <button type="button" class="pill-btn" data-group="time" data-value="Evening">Evening</button>
           </div>
         </div>
+        <div style="display: flex; flex-direction: column; gap: 7px;">
+          <label class="field-label" for="f-details">Details</label>
+          <textarea class="field-input" id="f-details" name="details" rows="4" placeholder="Tell us about your space or event. Location, dates, foot traffic, anything else we should know."></textarea>
+        </div>
         <button type="submit" class="btn-primary" style="border: none; padding: 16px; font-size: 16px; font-weight: 700; cursor: pointer; width: 100%; box-shadow: 0 10px 24px -8px rgba(255,106,0,0.55);">Submit Interest</button>
         <div id="form-error" style="display: none; font-size: 14px; color: #B3261E; text-align: center;"></div>
       </form>
@@ -445,7 +450,6 @@
     </div>
     <div style="border-top: 1px solid #24405F; padding-top: 24px; display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; font-size: 13px; color: #7E97B3;">
       <div>© 2026 Buffalo Claw Co. Buffalo, NY. All rights reserved.</div>
-      <div>Formerly Super Claw Bros.</div>
     </div>
   </div>
 </footer>
@@ -537,13 +541,24 @@
       email: document.getElementById('f-email').value.trim(),
       phone: document.getElementById('f-phone').value.trim(),
       preferred_contact: picked.method,
-      preferred_time: picked.time
+      preferred_time: picked.time,
+      details: document.getElementById('f-details').value.trim()
     };
     if (!data.email && !data.phone) {
       errorBox.textContent = 'Please include an email or a phone number so we can reach you.';
       errorBox.style.display = 'block';
       return;
     }
+    // Ping Ken's phone directly (same-origin, see lead_notify/). Fire-and-forget:
+    // never blocks or fails the visitor's submission.
+    try {
+      fetch('/api/lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+        keepalive: true
+      }).catch(function () {});
+    } catch (e) {}
     if (FORMSPREE_ID) {
       fetch('https://formspree.io/f/' + FORMSPREE_ID, {
         method: 'POST',
@@ -560,7 +575,8 @@
       // Not wired to a form backend yet: open a prefilled email instead.
       var body = 'Name: ' + data.name + '\nBusiness or event: ' + data.business_or_event +
         '\nEmail: ' + data.email + '\nPhone: ' + data.phone +
-        '\nPreferred contact: ' + data.preferred_contact + '\nPreferred time: ' + data.preferred_time;
+        '\nPreferred contact: ' + data.preferred_contact + '\nPreferred time: ' + data.preferred_time +
+        '\nDetails: ' + data.details;
       window.location.href = 'mailto:' + FALLBACK_EMAIL +
         '?subject=' + encodeURIComponent('Buffalo Claw Co. — interest from ' + (data.name || 'website visitor')) +
         '&body=' + encodeURIComponent(body);
