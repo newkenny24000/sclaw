@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Super Claw Bros — Rack Card</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Press+Start+2P&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0e1a;
+    --card-bg: rgba(12, 18, 35, 0.85);
+    --blue: #0077FF;
+    --blue-bright: #3399FF;
+    --red: #E8243C;
+    --white: #ffffff;
+    --text: #E8ECF4;
+    --muted: #8A94A8;
+    --dim: #5A6478;
+    --border: rgba(255,255,255,0.08);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #1e1e2e;
+    font-family: 'Inter', -apple-system, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    min-height: 100vh;
+  }
+
+  .page-info {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+
+  .page-info h1 {
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 6px;
+  }
+
+  .page-info p {
+    font-size: 12px;
+    color: rgba(255,255,255,0.2);
+    max-width: 420px;
+    line-height: 1.5;
+  }
+
+  /* ===================== CARD ===================== */
+  .card {
+    width: 330px;
+    height: 764px;
+    background: var(--bg);
+    border-radius: 6px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 25px 80px rgba(0,0,0,0.6);
+    position: relative;
+  }
+
+  /* ---- TOP BAR / BRAND ---- */
+  .card-brand {
+    padding: 10px 18px 8px;
+    text-align: center;
+    flex-shrink: 0;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+  }
+  .card-brand::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, var(--blue), var(--red));
+  }
+  .card-brand-name {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 8px;
+    letter-spacing: 0.05em;
+    color: var(--white);
+  }
+  .card-brand-name .b-blue { color: var(--blue-bright); }
+  .card-brand-name .b-red { color: var(--red); }
+  .card-brand-loc {
+    font-size: 7px;
+    color: var(--dim);
+    margin-top: 2px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+  }
+
+  /* ---- HERO IMAGE ---- */
+  .card-hero-img {
+    margin: 0 14px;
+    height: 185px;
+    overflow: hidden;
+    flex-shrink: 0;
+    position: relative;
+    border-radius: 8px;
+  }
+
+  .card-hero-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 55%;
+    display: block;
+    border-radius: 8px;
+  }
+
+  .card-hero-img::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 40px;
+    background: linear-gradient(transparent, var(--bg));
+    border-radius: 0 0 8px 8px;
+  }
+
+  /* ---- HEADLINE ---- */
+  .card-headline {
+    padding: 6px 18px 8px;
+    text-align: center;
+    flex-shrink: 0;
+  }
+
+  .card-headline h1 {
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1.25;
+    letter-spacing: -0.3px;
+    margin-bottom: 4px;
+  }
+
+  .card-headline p {
+    font-size: 9.5px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* ---- STAT BOXES ---- */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+    padding: 0 14px;
+    margin-bottom: 8px;
+    flex-shrink: 0;
+  }
+
+  .stat {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 7px 6px 5px;
+    text-align: center;
+  }
+
+  .stat-value {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 10px;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.3px;
+  }
+  .stat-value.s-blue { color: var(--blue-bright); }
+  .stat-value.s-red { color: var(--red); }
+
+  .stat-label {
+    font-size: 7px;
+    font-weight: 500;
+    color: var(--dim);
+    margin-top: 3px;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+  }
+
+  /* ---- DIVIDER ---- */
+  .section-divider {
+    height: 1px;
+    background: var(--border);
+    margin: 6px 18px;
+    flex-shrink: 0;
+  }
+
+  /* ---- HOW IT WORKS ---- */
+  .steps-section {
+    padding: 4px 18px 2px;
+    flex-shrink: 0;
+  }
+
+  .section-label {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--blue-bright);
+    text-align: center;
+    margin-bottom: 2px;
+  }
+
+  .section-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--white);
+    text-align: center;
+    margin-bottom: 7px;
+  }
+
+  .step-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+    margin-bottom: 5px;
+  }
+
+  .step-num {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 7px;
+    font-weight: 700;
+    color: var(--blue-bright);
+  }
+
+  .step-text strong {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--white);
+    display: block;
+    line-height: 1.2;
+  }
+
+  .step-text p {
+    font-size: 8.5px;
+    color: var(--muted);
+    line-height: 1.4;
+    margin-top: 1px;
+  }
+
+  /* ---- BENEFITS ---- */
+  .benefits-section {
+    padding: 4px 18px 2px;
+    flex-shrink: 0;
+  }
+
+  .benefit-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 7px;
+    margin-bottom: 4px;
+  }
+
+  .benefit-check {
+    flex-shrink: 0;
+    color: var(--blue-bright);
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.4;
+  }
+
+  .benefit-text {
+    font-size: 9px;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+
+  .benefit-text strong {
+    color: var(--white);
+    font-weight: 600;
+  }
+
+  /* ---- FOOTER ---- */
+  .card-footer {
+    margin-top: auto;
+    padding: 10px 14px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+  }
+  .card-footer::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, var(--blue), var(--red));
+  }
+
+  .footer-left {
+    flex-shrink: 0;
+  }
+  .footer-logo {
+    width: 60px;
+    height: auto;
+    display: block;
+  }
+
+  .footer-right {
+    text-align: right;
+  }
+  .footer-cta {
+    font-size: 9px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.5;
+    margin-bottom: 2px;
+  }
+  .footer-cta .f-url {
+    color: var(--blue-bright);
+  }
+  .footer-phone {
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: 0.3px;
+  }
+  .footer-badges {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 3px;
+  }
+
+  .footer-badge {
+    font-size: 7px;
+    font-weight: 600;
+    color: var(--dim);
+    display: flex;
+    align-items: center;
+    gap: 2px;
+  }
+
+  .footer-badge span {
+    font-size: 9px;
+  }
+  .flag-icon {
+    display: inline-block;
+    width: 12px; height: 8px;
+    background: linear-gradient(
+      to bottom,
+      #B22234 0%, #B22234 14.28%,
+      #fff 14.28%, #fff 28.57%,
+      #B22234 28.57%, #B22234 42.85%,
+      #fff 42.85%, #fff 57.14%,
+      #B22234 57.14%, #B22234 71.42%,
+      #fff 71.42%, #fff 85.71%,
+      #B22234 85.71%, #B22234 100%
+    );
+    position: relative;
+    border-radius: 1px;
+    flex-shrink: 0;
+  }
+  .flag-icon::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 5px; height: 4px;
+    background: #3C3B6E;
+  }
+
+  /* ---- PRINT INSTRUCTIONS ---- */
+  .print-note {
+    max-width: 500px;
+    margin-top: 40px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+    padding: 20px 24px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.7;
+  }
+
+  .print-note h3 {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--blue-bright);
+    margin-bottom: 8px;
+  }
+
+  .print-note strong {
+    color: rgba(255,255,255,0.8);
+  }
+</style>
+</head>
+<body>
+
+<div class="page-info">
+  <h1>Super Claw Bros — Rack Card</h1>
+  <p>Single-sided · Print 3 per 8.5" × 11" sheet · Matte Cover 100lb · Replace contact info before printing</p>
+</div>
+
+<div class="card">
+
+  <!-- BRAND BAR -->
+  <div class="card-brand">
+    <div class="card-brand-name"><span class="b-blue">SUPER</span> <span class="b-red">CLAW</span> BROS.</div>
+    <div class="card-brand-loc">Buffalo, NY</div>
+  </div>
+
+  <!-- HERO IMAGE -->
+  <div class="card-hero-img">
+    <img src="pizzeria.png" alt="Kids playing Super Claw Bros machine in a pizzeria">
+  </div>
+
+  <!-- HEADLINE -->
+  <div class="card-headline">
+    <h1>Earn Passive Income<br>From Your Unused Space</h1>
+    <p>We place a mini claw machine in your business. Zero upfront cost — we handle everything. You just collect your share.</p>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats-grid">
+    <div class="stat">
+      <div class="stat-value s-blue">$0</div>
+      <div class="stat-label">Upfront cost to you</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value s-red">Easy</div>
+      <div class="stat-label">We take care of everything</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value s-blue">Tiny</div>
+      <div class="stat-label">Footprint as small as 14" × 20"</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value s-red">Local</div>
+      <div class="stat-label">Owned & operated in Buffalo, NY</div>
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- HOW IT WORKS -->
+  <div class="steps-section">
+    <div class="section-label">How It Works</div>
+    <div class="section-title">Simple Setup, Ongoing Revenue</div>
+
+    <div class="step-row">
+      <div class="step-num">01</div>
+      <div class="step-text">
+        <strong>We Place a Machine</strong>
+        <p>We handle delivery, setup, and stocking with fun prizes. No cost, no hassle.</p>
+      </div>
+    </div>
+
+    <div class="step-row">
+      <div class="step-num">02</div>
+      <div class="step-text">
+        <strong>Customers Play</strong>
+        <p>Your guests play with dollars or quarters. They win prizes and have a great time.</p>
+      </div>
+    </div>
+
+    <div class="step-row">
+      <div class="step-num">03</div>
+      <div class="step-text">
+        <strong>You Earn</strong>
+        <p>You earn a share from every play with convenient cash payouts.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- BENEFITS -->
+  <div class="benefits-section">
+    <div class="benefit-item">
+      <div class="benefit-check">&#10003;</div>
+      <div class="benefit-text"><strong>Zero upfront investment</strong> — we provide, stock, and maintain it</div>
+    </div>
+    <div class="benefit-item">
+      <div class="benefit-check">&#10003;</div>
+      <div class="benefit-text"><strong>Revenue from every play</strong> — cash goes straight into the coin box</div>
+    </div>
+    <div class="benefit-item">
+      <div class="benefit-check">&#10003;</div>
+      <div class="benefit-text"><strong>We handle everything</strong> — restocking, maintenance, and management</div>
+    </div>
+    <div class="benefit-item">
+      <div class="benefit-check">&#10003;</div>
+      <div class="benefit-text"><strong>Local support</strong> — based in Buffalo, service is always fast</div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="card-footer">
+    <div class="footer-left">
+      <img src="logo.png" alt="Super Claw Bros" class="footer-logo">
+    </div>
+    <div class="footer-right">
+      <div class="footer-cta">Sign up at <span class="f-url">superclawbros.com</span></div>
+      <div class="footer-phone">or call 716-472-1689</div>
+      <div class="footer-badges">
+        <div class="footer-badge"><span class="flag-icon"></span> Family Owned</div>
+        <div class="footer-badge"><span>👨‍👩‍👧‍👦</span> Family Owned</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="print-note">
+  <h3>Printing Instructions</h3>
+  <strong>FedEx Office settings:</strong> Full Color · 8.5" × 11" · Matte Cover (100 lb.) · Single-Sided<br>
+  <strong>After printing:</strong> Ask them to cut each sheet into 3 equal strips (3.67" × 8.5" each)<br>
+  <strong>Pro tip:</strong> Corner rounder punch (~$6 on Amazon) for polished edges<br>
+  <strong>Swap in</strong> your real name, phone, and email before sending to print
+</div>
+
+</body>
+</html>

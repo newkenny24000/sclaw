@@ -39,7 +39,7 @@ nginx -t 2>&1 | tail -1; systemctl reload nginx
 echo "health: $(curl -s http://127.0.0.1:8580/health)"
 echo "site:   $(curl -s -o /dev/null -w '%{http_code}' https://buffaloclawmachines.com/)"
 echo "test:   $(curl -s -X POST https://buffaloclawmachines.com/api/lead -H 'Content-Type: application/json' -d '{"name":"Test Person","email":"test@example.com"}')"
-echo "ping:   $(curl -s -X POST https://buffaloclawmachines.com/api/lead -H 'Content-Type: application/json' -d '{"name":"Deploy check","business_or_event":"bcc_lead is live","phone":"7163250758","details":"If you can read this on your phone, form leads now reach you directly."}')"
+echo "ping:   $(curl -s -X POST https://buffaloclawmachines.com/api/lead -H 'Content-Type: application/json' -d '{"name":"Deploy check","business_or_event":"bcc_lead is live","phone":"7164721689","details":"If you can read this on your phone, form leads now reach you directly."}')"
 tail -3 /home/bccsite/logs/lead.log
 '@
 $remote = $remote.Replace("__TOPIC__", $topic) -replace "`r`n", "`n"
